@@ -1,0 +1,32 @@
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.css';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+
+  .ngx-datatable {
+    height: 85vh;
+    width: 91vw;
+    border-radius: 8px;
+  }
+
+  .datatable-header {
+    background-color: lightgray;
+    border: 0 !important;
+  }
+
+  .datatable-header-cell {
+    background-color: lightgrey !important;
+    font-size: 14px !important;
+  }
+
+  .datatable-body {
+    height: 80.5vh !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+<div class="screen-content">
+
+  <input
+    type="text"
+    style="padding:8px;margin:15px auto;width:30%;"
+    placeholder="Type to filter the name column..."
+    (keyup)="updateFilter($event)"/>
+
+  <ngx-datatable
+    class="material"
+    [loadingIndicator]="loading"
+    [rows]="filteredPosts"
+    [columnMode]="'flex'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [selected]="selected"
+    [selectionType]="'checkbox'"
+    [selectAllRowsOnPage]="false"
+    (select)="onSelect($event)">
+
+
+    <ngx-datatable-column
+      [width]="30"
+      [sortable]="false"
+      [canAutoResize]="false"
+      [draggable]="false"
+      [resizeable]="false"
+      [headerCheckboxable]="true"
+      [checkboxable]="true"></ngx-datatable-column>
+
+
+    <ngx-datatable-column name="User Id" [resizeable]="false" [flexGrow]="1">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{ value }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Id" [resizeable]="false" [flexGrow]="1">
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        {{ value }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Title" [resizeable]="false" [flexGrow]="3">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{ value }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Body" [resizeable]="false" [flexGrow]="3">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{ value }}
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+
+</div>
