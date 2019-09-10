@@ -8,8 +8,10 @@
         placeholder="Type to filter the id column..."
         (keyup)="updateFilter($event)"/>
     </div>
-    <div fxFlex="0 0 10" dir="rtl">
-      <mat-icon>delete_outline</mat-icon>
+    <div fxFlex="0 0 10">
+      <div style="position: relative; top:1.5em; direction: rtl">
+        <button mat-icon-button><mat-icon>delete_outline</mat-icon></button>
+      </div>
     </div>
   </div>
 
