@@ -1,10 +1,17 @@
 <div class="screen-content">
 
-  <input
-    type="text"
-    style="padding:8px;margin:15px auto;width:30%;"
-    placeholder="Type to filter the name column..."
-    (keyup)="updateFilter($event)"/>
+  <div fxLayout>
+    <div fxFlex>
+      <input
+        type="text"
+        style="padding:8px;margin:15px auto;width:30%;"
+        placeholder="Type to filter the id column..."
+        (keyup)="updateFilter($event)"/>
+    </div>
+    <div fxFlex="0 0 10" dir="rtl">
+      <mat-icon>delete_outline</mat-icon>
+    </div>
+  </div>
 
   <ngx-datatable
     class="material"
