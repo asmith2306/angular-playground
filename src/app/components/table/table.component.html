@@ -31,7 +31,9 @@
     [selectionType]="'checkbox'"
     [selectAllRowsOnPage]="false"
     (select)="onSelect($event)"
-    [messages]="tableMessages">
+    [messages]="tableMessages"
+    (activate)="onActivate($event)"
+    (mouseleave)="deactivate($event)">
 
     <!-- Can't use combination of columns and template columns -->
     <!--    <ngx-datatable-column-->
@@ -130,7 +132,8 @@
         </div>
 
         <div *ngIf="row.id % 2 !== 0">
-          <button mat-stroked-button style="width: 95%; background-color: #4bab4e; color:white"
+          <button mat-stroked-button style="width: 95%;"
+                  [ngStyle]="row.id === activeRow && {'background-color':'#e8e8e8'}"
                   [matMenuTriggerFor]="menu">
             <span style="float: left">Menu</span>
             <mat-icon style="float: right; position: relative; top: 0.15em; right: -0.5em;">arrow_drop_down</mat-icon>

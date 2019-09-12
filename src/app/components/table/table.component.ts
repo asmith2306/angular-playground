@@ -61,6 +61,8 @@ export class TableComponent implements OnInit {
     // selectedMessage: 'selected'
   };
 
+  activeRow: number;
+
   constructor(private postService: PostService,
               private peopleService: PeopleService,
               public dialog: MatDialog,
@@ -200,7 +202,11 @@ export class TableComponent implements OnInit {
   }
 
   onActivate(event) {
-    console.log('Activate Event', event);
+    this.activeRow = event.row.id;
+  }
+
+  deactivate($event: MouseEvent) {
+    this.activeRow = undefined;
   }
 
   editClicked(id: number) {
