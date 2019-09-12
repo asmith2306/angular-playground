@@ -24,6 +24,10 @@
   overflow-x: hidden;
 }
 
+.datatable-body-cell {
+  line-height: 2em !important;
+}
+
 .actions-header {
   .datatable-header-cell-template-wrap {
     float: right;

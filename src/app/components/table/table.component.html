@@ -107,7 +107,7 @@
 
     <-- Row action templates -->
     <ng-template #actionsTmpl let-row="row" let-value="value">
-      <div style="float: right">
+      <div style="float: right; position: relative; top: -6px">
         <button mat-icon-button (click)="editClicked(row.id)">
           <mat-icon>edit_outline</mat-icon>
         </button>
@@ -121,7 +121,7 @@
     </ng-template>
 
     <ng-template #actionMenuTmpl let-row="row" let-value="value">
-      <div style="float: right; width: 100%">
+      <div style="float: right; width: 100%; position: relative; top: -4px;">
 
         <div *ngIf="row.id % 2 === 0">
           <button mat-stroked-button style="width: 95%" (click)="openAssignmentDialog(row.id)">

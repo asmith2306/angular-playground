@@ -233,6 +233,6 @@ export class TableComponent implements OnInit {
   }
 
   getRowHeight(): number {
-    return 80;
+    return 56;
   }
 }
