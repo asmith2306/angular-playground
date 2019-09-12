@@ -21,36 +21,19 @@ export class TableComponent implements OnInit {
   table: DatatableComponent;
 
   // Post templates
-  @ViewChild('userIdHeaderTmpl', {static: true}) userIdHeaderTmpl: TemplateRef<any>;
   @ViewChild('userIdTmpl', {static: true}) userIdTmpl: TemplateRef<any>;
-
-  @ViewChild('idHeaderTmpl', {static: true}) idHeaderTmpl: TemplateRef<any>;
   @ViewChild('idTmpl', {static: true}) idTmpl: TemplateRef<any>;
-
-  @ViewChild('titleHeaderTmpl', {static: true}) titleHeaderTmpl: TemplateRef<any>;
   @ViewChild('titleTmpl', {static: true}) titleTmpl: TemplateRef<any>;
-
-  @ViewChild('bodyHeaderTmpl', {static: true}) bodyHeaderTmpl: TemplateRef<any>;
   @ViewChild('bodyTmpl', {static: true}) bodyTmpl: TemplateRef<any>;
 
   // Person templates
-  @ViewChild('personIdHeaderTmpl', {static: true}) personIdHeaderTmpl: TemplateRef<any>;
   @ViewChild('personIdTmpl', {static: true}) personIdTmpl: TemplateRef<any>;
-
-  @ViewChild('personNameHeaderTmpl', {static: true}) personNameHeaderTmpl: TemplateRef<any>;
   @ViewChild('personNameTmpl', {static: true}) personNameTmpl: TemplateRef<any>;
-
-  @ViewChild('personGenderHeaderTmpl', {static: true}) personGenderHeaderTmpl: TemplateRef<any>;
   @ViewChild('personGenderTmpl', {static: true}) personGenderTmpl: TemplateRef<any>;
-
-  @ViewChild('personAgeHeaderTmpl', {static: true}) personAgeHeaderTmpl: TemplateRef<any>;
   @ViewChild('personAgeTmpl', {static: true}) personAgeTmpl: TemplateRef<any>;
 
   // Row action templates
-  @ViewChild('actionsHeaderTmpl', {static: true}) actionsHeaderTmpl: TemplateRef<any>;
   @ViewChild('actionsTmpl', {static: true}) actionsTmpl: TemplateRef<any>;
-
-  @ViewChild('actionMenuHeaderTmpl', {static: true}) actionMenuHeaderTmpl: TemplateRef<any>;
   @ViewChild('actionMenuTmpl', {static: true}) actionMenuTmpl: TemplateRef<any>;
 
   allPosts: Array<Post>;
@@ -99,35 +82,30 @@ export class TableComponent implements OnInit {
 
     this.postColumns = [
       {
-        headerTemplate: this.userIdHeaderTmpl,
         cellTemplate: this.userIdTmpl,
         name: 'USER ID',
         flexGrow: 1,
         resizeable: false
       },
       {
-        headerTemplate: this.idHeaderTmpl,
         cellTemplate: this.idTmpl,
         name: 'ID',
         flexGrow: 1,
         resizeable: false
       },
       {
-        headerTemplate: this.titleHeaderTmpl,
         cellTemplate: this.titleTmpl,
         name: 'TITLE',
         flexGrow: 3,
         resizeable: false
       },
       {
-        headerTemplate: this.bodyHeaderTmpl,
         cellTemplate: this.bodyTmpl,
         name: 'BODY',
         flexGrow: 3,
         resizeable: false
       },
       {
-        headerTemplate: this.actionsHeaderTmpl,
         cellTemplate: this.actionsTmpl,
         headerClass: 'actions-header',
         name: 'ACTIONS',
@@ -135,7 +113,6 @@ export class TableComponent implements OnInit {
         resizeable: false
       },
       {
-        headerTemplate: this.actionMenuHeaderTmpl,
         cellTemplate: this.actionMenuTmpl,
         headerClass: 'actions-header',
         name: 'ACTION MENU',
@@ -146,71 +123,67 @@ export class TableComponent implements OnInit {
 
     this.peopleColumns = [
       {
-        headerTemplate: this.personIdHeaderTmpl,
         cellTemplate: this.personIdTmpl,
         name: 'ID',
         flexGrow: 1,
         resizeable: false
       },
       {
-        headerTemplate: this.personNameHeaderTmpl,
         cellTemplate: this.personNameTmpl,
         name: 'NAME',
         flexGrow: 2,
         resizeable: false
       },
       {
-        headerTemplate: this.personGenderHeaderTmpl,
         cellTemplate: this.personGenderTmpl,
         name: 'GENDER',
         flexGrow: 2,
         resizeable: false
       },
       {
-        headerTemplate: this.personAgeHeaderTmpl,
         cellTemplate: this.personAgeTmpl,
         name: 'AGE',
         flexGrow: 1,
         resizeable: false
       },
       {
-        headerTemplate: this.actionsHeaderTmpl,
         cellTemplate: this.actionsTmpl,
         headerClass: 'actions-header',
         name: 'ACTIONS',
         flexGrow: 1,
-        resizeable: false
+        resizeable: false,
+        sortable: false
       },
       {
-        headerTemplate: this.actionMenuHeaderTmpl,
         cellTemplate: this.actionMenuTmpl,
         headerClass: 'actions-header',
         name: 'ACTION MENU',
         flexGrow: 1,
-        resizeable: false
+        resizeable: false,
+        sortable: false
       }
     ];
   }
 
-  // updateFilter(event: KeyboardEvent) {
-  //   const val = (event.target as HTMLInputElement).value.toLowerCase();
-  //
-  //   this.filteredPosts = _.cloneDeep(this.allPosts);
-  //
-  //   if (val.length === 0) {
-  //     return;
-  //   }
-  //
-  //   // filter our data
-  //   const temp = this.filteredPosts.filter((post: Post) => {
-  //     return post.id === Number(val);
-  //   });
-  //
-  //   // update the rows
-  //   this.filteredPosts = temp;
-  //   // Whenever the filter changes, always go back to the first page
-  //   this.table.offset = 0;
-  // }
+  updateFilter(event: KeyboardEvent) {
+    const val = (event.target as HTMLInputElement).value.toLowerCase();
+
+    this.filteredPeople = _.cloneDeep(this.allPeople);
+
+    if (val.length === 0) {
+      return;
+    }
+
+    // filter our data
+    const temp = this.filteredPeople.filter((person: Person) => {
+      return person.age === Number(val);
+    });
+
+    // update the rows
+    this.filteredPeople = temp;
+    // Whenever the filter changes, always go back to the first page
+    this.table.offset = 0;
+  }
 
   onSelect({selected}) {
     console.log('Select Event', selected, this.selected);

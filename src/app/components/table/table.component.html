@@ -5,7 +5,7 @@
       <input
         type="text"
         style="padding:8px;margin:15px auto;width:30%;"
-        placeholder="Type to filter the id column..."
+        placeholder="Type to filter the age column..."
         (keyup)="updateFilter($event)"/>
     </div>
     <div fxFlex="0 0 10">
@@ -65,49 +65,40 @@
     <!--    </ngx-datatable-column>-->
 
     <!-- Comment data templates -->
-    <ng-template #userIdHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
     <ng-template #userIdTmpl let-row="row" let-value="value">
       <div>{{row.userId}}</div>
     </ng-template>
 
-    <ng-template #idHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
     <ng-template #idTmpl let-row="row" let-value="value">
       <div>{{row.id}}</div>
     </ng-template>
 
-    <ng-template #titleHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
     <ng-template #titleTmpl let-row="row" let-value="value">
       <div>{{row.title}}</div>
     </ng-template>
 
-    <ng-template #bodyHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
     <ng-template #bodyTmpl let-row="row" let-value="value">
       <div>{{row.body}}</div>
     </ng-template>
 
     <!-- Person data templates -->
-    <ng-template #personIdHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
     <ng-template #personIdTmpl let-row="row" let-value="value">
       <div>{{row.id}}</div>
     </ng-template>
 
-    <ng-template #personNameHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
     <ng-template #personNameTmpl let-row="row" let-value="value">
       <div>{{row.name}}</div>
     </ng-template>
 
-    <ng-template #personGenderHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
     <ng-template #personGenderTmpl let-row="row" let-value="value">
       <div>{{row.gender}}</div>
     </ng-template>
 
-    <ng-template #personAgeHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
     <ng-template #personAgeTmpl let-row="row" let-value="value">
       <div>{{row.age}}</div>
     </ng-template>
 
     <-- Row action templates -->
-    <ng-template #actionsHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
     <ng-template #actionsTmpl let-row="row" let-value="value">
       <div style="float: right">
         <button mat-icon-button (click)="editClicked(row.id)">
@@ -122,7 +113,6 @@
       </div>
     </ng-template>
 
-    <ng-template #actionMenuHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
     <ng-template #actionMenuTmpl let-row="row" let-value="value">
       <div style="float: right; width: 100%">
         <button mat-stroked-button style="width: 95%" (click)="openAssignmentDialog(row.id)">
