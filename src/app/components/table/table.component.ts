@@ -6,6 +6,8 @@ import * as _ from 'lodash';
 import {MatDialog} from '@angular/material';
 import {AssignmentDialogComponent} from '../../dialogs/assignment-dialog/assignment-dialog.component';
 import {MatSnackBarService} from '../../services/mat-snackbar.service';
+import {PeopleService} from '../../services/people.service';
+import {Person} from '../../models/person';
 
 @Component({
   selector: 'app-table',
@@ -18,6 +20,7 @@ export class TableComponent implements OnInit {
   @ViewChild(DatatableComponent, {static: false})
   table: DatatableComponent;
 
+  // Post templates
   @ViewChild('userIdHeaderTmpl', {static: true}) userIdHeaderTmpl: TemplateRef<any>;
   @ViewChild('userIdTmpl', {static: true}) userIdTmpl: TemplateRef<any>;
 
@@ -30,6 +33,20 @@ export class TableComponent implements OnInit {
   @ViewChild('bodyHeaderTmpl', {static: true}) bodyHeaderTmpl: TemplateRef<any>;
   @ViewChild('bodyTmpl', {static: true}) bodyTmpl: TemplateRef<any>;
 
+  // Person templates
+  @ViewChild('personIdHeaderTmpl', {static: true}) personIdHeaderTmpl: TemplateRef<any>;
+  @ViewChild('personIdTmpl', {static: true}) personIdTmpl: TemplateRef<any>;
+
+  @ViewChild('personNameHeaderTmpl', {static: true}) personNameHeaderTmpl: TemplateRef<any>;
+  @ViewChild('personNameTmpl', {static: true}) personNameTmpl: TemplateRef<any>;
+
+  @ViewChild('personGenderHeaderTmpl', {static: true}) personGenderHeaderTmpl: TemplateRef<any>;
+  @ViewChild('personGenderTmpl', {static: true}) personGenderTmpl: TemplateRef<any>;
+
+  @ViewChild('personAgeHeaderTmpl', {static: true}) personAgeHeaderTmpl: TemplateRef<any>;
+  @ViewChild('personAgeTmpl', {static: true}) personAgeTmpl: TemplateRef<any>;
+
+  // Row action templates
   @ViewChild('actionsHeaderTmpl', {static: true}) actionsHeaderTmpl: TemplateRef<any>;
   @ViewChild('actionsTmpl', {static: true}) actionsTmpl: TemplateRef<any>;
 
@@ -38,8 +55,11 @@ export class TableComponent implements OnInit {
 
   allPosts: Array<Post>;
   filteredPosts: Array<Post>;
+  postColumns = Array<TableColumn>();
 
-  columns = Array<TableColumn>();
+  allPeople: Array<Person>;
+  filteredPeople: Array<Person>;
+  peopleColumns = Array<TableColumn>();
 
   selected = [];
 
@@ -58,6 +78,7 @@ export class TableComponent implements OnInit {
   };
 
   constructor(private postService: PostService,
+              private peopleService: PeopleService,
               public dialog: MatDialog,
               private matSnackBarService: MatSnackBarService) {
   }
@@ -70,7 +91,13 @@ export class TableComponent implements OnInit {
       this.loading = false;
     });
 
-    this.columns = [
+    this.peopleService.get().subscribe(res => {
+      this.allPeople = res;
+      this.filteredPeople = res;
+      this.loading = false;
+    });
+
+    this.postColumns = [
       {
         headerTemplate: this.userIdHeaderTmpl,
         cellTemplate: this.userIdTmpl,
@@ -117,27 +144,73 @@ export class TableComponent implements OnInit {
       }
     ];
 
+    this.peopleColumns = [
+      {
+        headerTemplate: this.personIdHeaderTmpl,
+        cellTemplate: this.personIdTmpl,
+        name: 'ID',
+        flexGrow: 1,
+        resizeable: false
+      },
+      {
+        headerTemplate: this.personNameHeaderTmpl,
+        cellTemplate: this.personNameTmpl,
+        name: 'NAME',
+        flexGrow: 2,
+        resizeable: false
+      },
+      {
+        headerTemplate: this.personGenderHeaderTmpl,
+        cellTemplate: this.personGenderTmpl,
+        name: 'GENDER',
+        flexGrow: 2,
+        resizeable: false
+      },
+      {
+        headerTemplate: this.personAgeHeaderTmpl,
+        cellTemplate: this.personAgeTmpl,
+        name: 'AGE',
+        flexGrow: 1,
+        resizeable: false
+      },
+      {
+        headerTemplate: this.actionsHeaderTmpl,
+        cellTemplate: this.actionsTmpl,
+        headerClass: 'actions-header',
+        name: 'ACTIONS',
+        flexGrow: 1,
+        resizeable: false
+      },
+      {
+        headerTemplate: this.actionMenuHeaderTmpl,
+        cellTemplate: this.actionMenuTmpl,
+        headerClass: 'actions-header',
+        name: 'ACTION MENU',
+        flexGrow: 1,
+        resizeable: false
+      }
+    ];
   }
 
-  updateFilter(event: KeyboardEvent) {
-    const val = (event.target as HTMLInputElement).value.toLowerCase();
-
-    this.filteredPosts = _.cloneDeep(this.allPosts);
-
-    if (val.length === 0) {
-      return;
-    }
-
-    // filter our data
-    const temp = this.filteredPosts.filter((post: Post) => {
-      return post.id === Number(val);
-    });
-
-    // update the rows
-    this.filteredPosts = temp;
-    // Whenever the filter changes, always go back to the first page
-    this.table.offset = 0;
-  }
+  // updateFilter(event: KeyboardEvent) {
+  //   const val = (event.target as HTMLInputElement).value.toLowerCase();
+  //
+  //   this.filteredPosts = _.cloneDeep(this.allPosts);
+  //
+  //   if (val.length === 0) {
+  //     return;
+  //   }
+  //
+  //   // filter our data
+  //   const temp = this.filteredPosts.filter((post: Post) => {
+  //     return post.id === Number(val);
+  //   });
+  //
+  //   // update the rows
+  //   this.filteredPosts = temp;
+  //   // Whenever the filter changes, always go back to the first page
+  //   this.table.offset = 0;
+  // }
 
   onSelect({selected}) {
     console.log('Select Event', selected, this.selected);

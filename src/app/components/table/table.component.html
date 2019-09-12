@@ -20,8 +20,8 @@
   <ngx-datatable
     class="material"
     [loadingIndicator]="loading"
-    [rows]="filteredPosts"
-    [columns]="columns"
+    [rows]="filteredPeople"
+    [columns]="peopleColumns"
     [columnMode]="'flex'"
     [headerHeight]="50"
     [footerHeight]="50"
@@ -64,6 +64,7 @@
     <!--      </ng-template>-->
     <!--    </ngx-datatable-column>-->
 
+    <!-- Comment data templates -->
     <ng-template #userIdHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
     <ng-template #userIdTmpl let-row="row" let-value="value">
       <div>{{row.userId}}</div>
@@ -84,6 +85,28 @@
       <div>{{row.body}}</div>
     </ng-template>
 
+    <!-- Person data templates -->
+    <ng-template #personIdHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
+    <ng-template #personIdTmpl let-row="row" let-value="value">
+      <div>{{row.id}}</div>
+    </ng-template>
+
+    <ng-template #personNameHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
+    <ng-template #personNameTmpl let-row="row" let-value="value">
+      <div>{{row.name}}</div>
+    </ng-template>
+
+    <ng-template #personGenderHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
+    <ng-template #personGenderTmpl let-row="row" let-value="value">
+      <div>{{row.gender}}</div>
+    </ng-template>
+
+    <ng-template #personAgeHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
+    <ng-template #personAgeTmpl let-row="row" let-value="value">
+      <div>{{row.age}}</div>
+    </ng-template>
+
+    <-- Row action templates -->
     <ng-template #actionsHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
     <ng-template #actionsTmpl let-row="row" let-value="value">
       <div style="float: right">
@@ -109,6 +132,5 @@
       </div>
     </ng-template>
   </ngx-datatable>
-
 
 </div>
