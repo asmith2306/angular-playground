@@ -31,6 +31,7 @@ export class TableComponent implements OnInit {
   @ViewChild('personNameTmpl', {static: true}) personNameTmpl: TemplateRef<any>;
   @ViewChild('personGenderTmpl', {static: true}) personGenderTmpl: TemplateRef<any>;
   @ViewChild('personAgeTmpl', {static: true}) personAgeTmpl: TemplateRef<any>;
+  @ViewChild('personAddressTmpl', {static: true}) personAddressTmpl: TemplateRef<any>;
 
   // Row action templates
   @ViewChild('actionsTmpl', {static: true}) actionsTmpl: TemplateRef<any>;
@@ -125,25 +126,31 @@ export class TableComponent implements OnInit {
       {
         cellTemplate: this.personIdTmpl,
         name: 'ID',
-        flexGrow: 1,
+        flexGrow: 0.5,
         resizeable: false
       },
       {
         cellTemplate: this.personNameTmpl,
         name: 'NAME',
-        flexGrow: 2,
+        flexGrow: 1,
         resizeable: false
       },
       {
         cellTemplate: this.personGenderTmpl,
         name: 'GENDER',
-        flexGrow: 2,
+        flexGrow: 0.5,
+        resizeable: false
+      },
+      {
+        cellTemplate: this.personAddressTmpl,
+        name: 'ADDRESS',
+        flexGrow: 1,
         resizeable: false
       },
       {
         cellTemplate: this.personAgeTmpl,
         name: 'AGE',
-        flexGrow: 1,
+        flexGrow: 0.2,
         resizeable: false
       },
       {

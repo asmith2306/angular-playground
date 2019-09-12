@@ -94,6 +94,11 @@
       <div>{{row.gender}}</div>
     </ng-template>
 
+    <ng-template #personAddressTmpl let-row="row" let-value="value">
+      <span>{{row.address.state}}, </span>
+      <span>{{row.address.city}}</span>
+    </ng-template>
+
     <ng-template #personAgeTmpl let-row="row" let-value="value">
       <div>{{row.age}}</div>
     </ng-template>
@@ -119,12 +124,14 @@
         <div *ngIf="row.id % 2 === 0">
           <button mat-stroked-button style="width: 95%" (click)="openAssignmentDialog(row.id)">
             <span style="float: left">Assign</span>
-            <mat-icon style="float: right; position: relative; top: 0.15em; right: -0.2em;">compare_arrows_outline</mat-icon>
+            <mat-icon style="float: right; position: relative; top: 0.15em; right: -0.2em;">compare_arrows_outline
+            </mat-icon>
           </button>
         </div>
 
         <div *ngIf="row.id % 2 !== 0">
-          <button mat-stroked-button style="width: 95%; background-color: #4bab4e; color:white" [matMenuTriggerFor]="menu">
+          <button mat-stroked-button style="width: 95%; background-color: #4bab4e; color:white"
+                  [matMenuTriggerFor]="menu">
             <span style="float: left">Menu</span>
             <mat-icon style="float: right; position: relative; top: 0.15em; right: -0.5em;">arrow_drop_down</mat-icon>
           </button>
