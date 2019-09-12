@@ -33,7 +33,7 @@ export class PostService extends ResourceService<Post> {
   delete(resource: Post) {
   }
 
-  get(): Post {
+  get(): Observable<Post> {
     return undefined;
   }
 
@@ -44,7 +44,8 @@ export class PostService extends ResourceService<Post> {
       );
   }
 
-  update(resource: Post) {
+  update(resource: Post): Observable<Post> {
+    return undefined;
   }
 
   private handleError(error: HttpErrorResponse) {

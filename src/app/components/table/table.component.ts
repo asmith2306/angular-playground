@@ -5,6 +5,7 @@ import {DatatableComponent, TableColumn} from '@swimlane/ngx-datatable';
 import * as _ from 'lodash';
 import {MatDialog} from '@angular/material';
 import {AssignmentDialogComponent} from '../../dialogs/assignment-dialog/assignment-dialog.component';
+import {MatSnackBarService} from '../../services/mat-snackbar.service';
 
 @Component({
   selector: 'app-table',
@@ -44,7 +45,9 @@ export class TableComponent implements OnInit {
 
   loading = true;
 
-  constructor(private postService: PostService, public dialog: MatDialog) {
+  constructor(private postService: PostService,
+              public dialog: MatDialog,
+              private matSnackBarService: MatSnackBarService) {
   }
 
   ngOnInit() {
@@ -135,15 +138,15 @@ export class TableComponent implements OnInit {
   }
 
   editClicked(id: number) {
-    console.log('Edit row ' + id + ' clicked');
+    this.matSnackBarService.open('Edit row ' + id + ' clicked');
   }
 
   copyClicked(id: number) {
-    console.log('Copy row ' + id + ' clicked');
+    this.matSnackBarService.open('Copy row ' + id + ' clicked');
   }
 
   deleteClicked(id: number) {
-    console.log('Delete row ' + id + ' clicked');
+    this.matSnackBarService.open('Delete row ' + id + ' clicked');
   }
 
   openAssignmentDialog(id: number) {
