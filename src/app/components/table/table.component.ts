@@ -3,6 +3,8 @@ import {PostService} from '../../services/post.service';
 import {Post} from '../../models/post';
 import {DatatableComponent, TableColumn} from '@swimlane/ngx-datatable';
 import * as _ from 'lodash';
+import {MatDialog} from '@angular/material';
+import {AssignmentDialogComponent} from '../../dialogs/assignment-dialog/assignment-dialog.component';
 
 @Component({
   selector: 'app-table',
@@ -30,6 +32,9 @@ export class TableComponent implements OnInit {
   @ViewChild('actionsHeaderTmpl', {static: true}) actionsHeaderTmpl: TemplateRef<any>;
   @ViewChild('actionsTmpl', {static: true}) actionsTmpl: TemplateRef<any>;
 
+  @ViewChild('actionMenuHeaderTmpl', {static: true}) actionMenuHeaderTmpl: TemplateRef<any>;
+  @ViewChild('actionMenuTmpl', {static: true}) actionMenuTmpl: TemplateRef<any>;
+
   allPosts: Array<Post>;
   filteredPosts: Array<Post>;
 
@@ -39,7 +44,7 @@ export class TableComponent implements OnInit {
 
   loading = true;
 
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService, public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -85,6 +90,14 @@ export class TableComponent implements OnInit {
         name: 'ACTIONS',
         flexGrow: 2,
         resizeable: false
+      },
+      {
+        headerTemplate: this.actionMenuHeaderTmpl,
+        cellTemplate: this.actionMenuTmpl,
+        headerClass: 'actions-header',
+        name: 'ACTION MENU',
+        flexGrow: 2,
+        resizeable: false
       }
     ];
 
@@ -119,5 +132,28 @@ export class TableComponent implements OnInit {
 
   onActivate(event) {
     console.log('Activate Event', event);
+  }
+
+  editClicked(id: number) {
+    console.log('Edit row ' + id + ' clicked');
+  }
+
+  copyClicked(id: number) {
+    console.log('Copy row ' + id + ' clicked');
+  }
+
+  deleteClicked(id: number) {
+    console.log('Delete row ' + id + ' clicked');
+  }
+
+  openAssignmentDialog(id: number) {
+    const dialogRef = this.dialog.open(AssignmentDialogComponent, {
+      width: '400px',
+      data: {id}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
   }
 }

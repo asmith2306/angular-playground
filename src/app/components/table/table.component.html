@@ -9,11 +9,11 @@
         (keyup)="updateFilter($event)"/>
     </div>
     <div fxFlex="0 0 10">
-      <div style="position: relative; top: 1em; direction: rtl">
-        <button mat-icon-button>
-          <mat-icon>delete_outline</mat-icon>
-        </button>
-      </div>
+<!--      <div style="position: relative; top: 1em; direction: rtl">-->
+<!--        <button mat-icon-button>-->
+<!--          <mat-icon>delete_outline</mat-icon>-->
+<!--        </button>-->
+<!--      </div>-->
     </div>
   </div>
 
@@ -86,14 +86,24 @@
     <ng-template #actionsHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
     <ng-template #actionsTmpl let-row="row" let-value="value">
       <div style="float: right">
-        <button mat-icon-button>
+        <button mat-icon-button (click)="editClicked(row.id)">
           <mat-icon>edit_outline</mat-icon>
         </button>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="copyClicked(row.id)">
           <mat-icon>file_copy_outline</mat-icon>
         </button>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="deleteClicked(row.id)">
           <mat-icon>delete_outline</mat-icon>
+        </button>
+      </div>
+    </ng-template>
+
+    <ng-template #actionMenuHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
+    <ng-template #actionMenuTmpl let-row="row" let-value="value">
+      <div style="float: right; width: 100%">
+        <button mat-stroked-button style="width: 95%" (click)="openAssignmentDialog(row.id)">
+          <span style="float: left">Menu</span>
+          <mat-icon style="float: right; position: relative; top: 0.15em; right: -0.5em;">arrow_drop_down</mat-icon>
         </button>
       </div>
     </ng-template>

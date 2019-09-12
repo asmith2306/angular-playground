@@ -12,6 +12,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {TableComponent} from './components/table/table.component';
 import {HttpClientModule} from '@angular/common/http';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import { AssignmentDialogComponent } from './dialogs/assignment-dialog/assignment-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
     LinkOneComponent,
     LinkTwoComponent,
     RxjsTesterComponent,
-    TableComponent
+    TableComponent,
+    AssignmentDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
     NgxDatatableModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AssignmentDialogComponent]
 })
 export class AppModule {
 }
