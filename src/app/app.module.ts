@@ -13,6 +13,7 @@ import {TableComponent} from './components/table/table.component';
 import {HttpClientModule} from '@angular/common/http';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import { AssignmentDialogComponent } from './dialogs/assignment-dialog/assignment-dialog.component';
+import { UnlessDirective } from './directives/unless.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AssignmentDialogComponent } from './dialogs/assignment-dialog/assignmen
     LinkTwoComponent,
     RxjsTesterComponent,
     TableComponent,
-    AssignmentDialogComponent
+    AssignmentDialogComponent,
+    UnlessDirective
   ],
   imports: [
     BrowserModule,
