@@ -58,7 +58,7 @@ export class TableComponent implements OnInit {
       {
         headerTemplate: this.userIdHeaderTmpl,
         cellTemplate: this.userIdTmpl,
-        name: 'User ID',
+        name: 'USER ID',
         flexGrow: 1,
         resizeable: false
       },
