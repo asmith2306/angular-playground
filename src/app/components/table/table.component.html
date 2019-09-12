@@ -10,7 +10,9 @@
     </div>
     <div fxFlex="0 0 10">
       <div style="position: relative; top: 1em; direction: rtl">
-        <button mat-icon-button><mat-icon>delete_outline</mat-icon></button>
+        <button mat-icon-button>
+          <mat-icon>delete_outline</mat-icon>
+        </button>
       </div>
     </div>
   </div>
@@ -19,6 +21,7 @@
     class="material"
     [loadingIndicator]="loading"
     [rows]="filteredPosts"
+    [columns]="columns"
     [columnMode]="'flex'"
     [headerHeight]="50"
     [footerHeight]="50"
@@ -29,36 +32,72 @@
     (select)="onSelect($event)">
 
 
-    <ngx-datatable-column
-      [width]="30"
-      [sortable]="false"
-      [canAutoResize]="false"
-      [draggable]="false"
-      [resizeable]="false"
-      [headerCheckboxable]="true"
-      [checkboxable]="true"></ngx-datatable-column>
+    <!-- Can't use combination of columns and template columns -->
+    <!--    <ngx-datatable-column-->
+    <!--      [width]="30"-->
+    <!--      [sortable]="false"-->
+    <!--      [canAutoResize]="false"-->
+    <!--      [draggable]="false"-->
+    <!--      [resizeable]="false"-->
+    <!--      [headerCheckboxable]="true"-->
+    <!--      [checkboxable]="true"></ngx-datatable-column>-->
 
+    <!--    <ngx-datatable-column name="User Id" [resizeable]="false" [flexGrow]="1">-->
+    <!--      <ng-template let-value="value" ngx-datatable-cell-template>-->
+    <!--        {{ value }}-->
+    <!--      </ng-template>-->
+    <!--    </ngx-datatable-column>-->
+    <!--    <ngx-datatable-column name="Id" [resizeable]="false" [flexGrow]="1">-->
+    <!--      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>-->
+    <!--        {{ value }}-->
+    <!--      </ng-template>-->
+    <!--    </ngx-datatable-column>-->
+    <!--    <ngx-datatable-column name="Title" [resizeable]="false" [flexGrow]="3">-->
+    <!--      <ng-template let-value="value" ngx-datatable-cell-template>-->
+    <!--        {{ value }}-->
+    <!--      </ng-template>-->
+    <!--    </ngx-datatable-column>-->
+    <!--    <ngx-datatable-column name="Body" [resizeable]="false" [flexGrow]="3">-->
+    <!--      <ng-template let-value="value" ngx-datatable-cell-template>-->
+    <!--        {{ value }}-->
+    <!--      </ng-template>-->
+    <!--    </ngx-datatable-column>-->
 
-    <ngx-datatable-column name="User Id" [resizeable]="false" [flexGrow]="1">
-      <ng-template let-value="value" ngx-datatable-cell-template>
-        {{ value }}
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Id" [resizeable]="false" [flexGrow]="1">
-      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-        {{ value }}
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Title" [resizeable]="false" [flexGrow]="3">
-      <ng-template let-value="value" ngx-datatable-cell-template>
-        {{ value }}
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="Body" [resizeable]="false" [flexGrow]="3">
-      <ng-template let-value="value" ngx-datatable-cell-template>
-        {{ value }}
-      </ng-template>
-    </ngx-datatable-column>
+    <ng-template #userIdHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
+    <ng-template #userIdTmpl let-row="row" let-value="value">
+      <div>{{row.userId}}</div>
+    </ng-template>
+
+    <ng-template #idHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
+    <ng-template #idTmpl let-row="row" let-value="value">
+      <div>{{row.id}}</div>
+    </ng-template>
+
+    <ng-template #titleHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
+    <ng-template #titleTmpl let-row="row" let-value="value">
+      <div>{{row.title}}</div>
+    </ng-template>
+
+    <ng-template #bodyHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
+    <ng-template #bodyTmpl let-row="row" let-value="value">
+      <div>{{row.body}}</div>
+    </ng-template>
+
+    <ng-template #actionsHeaderTmpl let-column="column"><strong>{{ column.name }}</strong></ng-template>
+    <ng-template #actionsTmpl let-row="row" let-value="value">
+      <div style="float: right">
+        <button mat-icon-button>
+          <mat-icon>edit_outline</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>file_copy_outline</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </div>
+    </ng-template>
   </ngx-datatable>
+
 
 </div>

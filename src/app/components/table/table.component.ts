@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {Post} from '../../models/post';
-import {DatatableComponent} from '@swimlane/ngx-datatable';
+import {DatatableComponent, TableColumn} from '@swimlane/ngx-datatable';
 import * as _ from 'lodash';
 
 @Component({
@@ -15,8 +15,25 @@ export class TableComponent implements OnInit {
   @ViewChild(DatatableComponent, {static: false})
   table: DatatableComponent;
 
+  @ViewChild('userIdHeaderTmpl', {static: true}) userIdHeaderTmpl: TemplateRef<any>;
+  @ViewChild('userIdTmpl', {static: true}) userIdTmpl: TemplateRef<any>;
+
+  @ViewChild('idHeaderTmpl', {static: true}) idHeaderTmpl: TemplateRef<any>;
+  @ViewChild('idTmpl', {static: true}) idTmpl: TemplateRef<any>;
+
+  @ViewChild('titleHeaderTmpl', {static: true}) titleHeaderTmpl: TemplateRef<any>;
+  @ViewChild('titleTmpl', {static: true}) titleTmpl: TemplateRef<any>;
+
+  @ViewChild('bodyHeaderTmpl', {static: true}) bodyHeaderTmpl: TemplateRef<any>;
+  @ViewChild('bodyTmpl', {static: true}) bodyTmpl: TemplateRef<any>;
+
+  @ViewChild('actionsHeaderTmpl', {static: true}) actionsHeaderTmpl: TemplateRef<any>;
+  @ViewChild('actionsTmpl', {static: true}) actionsTmpl: TemplateRef<any>;
+
   allPosts: Array<Post>;
   filteredPosts: Array<Post>;
+
+  columns = Array<TableColumn>();
 
   selected = [];
 
@@ -31,6 +48,45 @@ export class TableComponent implements OnInit {
       this.filteredPosts = res;
       this.loading = false;
     });
+
+    this.columns = [
+      {
+        headerTemplate: this.userIdHeaderTmpl,
+        cellTemplate: this.userIdTmpl,
+        name: 'User ID',
+        flexGrow: 1,
+        resizeable: false
+      },
+      {
+        headerTemplate: this.idHeaderTmpl,
+        cellTemplate: this.idTmpl,
+        name: 'ID',
+        flexGrow: 1,
+        resizeable: false
+      },
+      {
+        headerTemplate: this.titleHeaderTmpl,
+        cellTemplate: this.titleTmpl,
+        name: 'TITLE',
+        flexGrow: 3,
+        resizeable: false
+      },
+      {
+        headerTemplate: this.bodyHeaderTmpl,
+        cellTemplate: this.bodyTmpl,
+        name: 'BODY',
+        flexGrow: 3,
+        resizeable: false
+      },
+      {
+        headerTemplate: this.actionsHeaderTmpl,
+        cellTemplate: this.actionsTmpl,
+        headerClass: 'actions-header',
+        name: 'ACTIONS',
+        flexGrow: 2,
+        resizeable: false
+      }
+    ];
 
   }
 

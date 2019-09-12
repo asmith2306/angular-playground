@@ -3,27 +3,33 @@
 @import '~@swimlane/ngx-datatable/assets/icons.css';
 
 
-  .ngx-datatable {
-    height: 80vh;
-    border-radius: 8px;
-  }
+.ngx-datatable {
+  height: 80vh;
+  border-radius: 8px;
+}
 
-  .datatable-header {
-    background-color: lightgray;
-    border: 0 !important;
-  }
+.datatable-header {
+  background-color: lightgray;
+  border: 0 !important;
+}
 
-  .datatable-header-cell {
-    background-color: lightgrey !important;
-    font-size: 14px !important;
-  }
+.datatable-header-cell {
+  background-color: lightgrey !important;
+  font-size: 14px !important;
+}
 
-  .datatable-body {
-    height: 80.5vh !important;
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
+.datatable-body {
+  height: 80.5vh !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 
+.actions-header {
+  .datatable-header-cell-template-wrap {
+    float: right;
+    margin-right: 12px;
+  }
+}
 
 
 
