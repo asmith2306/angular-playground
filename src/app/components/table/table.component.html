@@ -9,11 +9,11 @@
         (keyup)="updateFilter($event)"/>
     </div>
     <div fxFlex="0 0 10">
-<!--      <div style="position: relative; top: 1em; direction: rtl">-->
-<!--        <button mat-icon-button>-->
-<!--          <mat-icon>delete_outline</mat-icon>-->
-<!--        </button>-->
-<!--      </div>-->
+      <!--      <div style="position: relative; top: 1em; direction: rtl">-->
+      <!--        <button mat-icon-button>-->
+      <!--          <mat-icon>delete_outline</mat-icon>-->
+      <!--        </button>-->
+      <!--      </div>-->
     </div>
   </div>
 
@@ -25,12 +25,13 @@
     [columnMode]="'flex'"
     [headerHeight]="50"
     [footerHeight]="50"
-    [rowHeight]="'auto'"
+    [rowHeight]="getRowHeight()"
+    [scrollbarV]="true"
     [selected]="selected"
     [selectionType]="'checkbox'"
     [selectAllRowsOnPage]="false"
-    (select)="onSelect($event)">
-
+    (select)="onSelect($event)"
+    [messages]="tableMessages">
 
     <!-- Can't use combination of columns and template columns -->
     <!--    <ngx-datatable-column-->

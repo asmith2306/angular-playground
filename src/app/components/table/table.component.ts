@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {Post} from '../../models/post';
 import {DatatableComponent, TableColumn} from '@swimlane/ngx-datatable';
@@ -45,12 +45,25 @@ export class TableComponent implements OnInit {
 
   loading = true;
 
+  tableMessages = {
+    // Message to show when array is presented
+    // but contains no values
+    emptyMessage: 'No data to display',
+
+    // Footer total message
+    totalMessage: 'total',
+
+    // Footer selected message
+    // selectedMessage: 'selected'
+  };
+
   constructor(private postService: PostService,
               public dialog: MatDialog,
               private matSnackBarService: MatSnackBarService) {
   }
 
   ngOnInit() {
+
     this.postService.getAll().subscribe(res => {
       this.allPosts = res;
       this.filteredPosts = res;
@@ -158,5 +171,9 @@ export class TableComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
     });
+  }
+
+  getRowHeight(): number {
+    return 80;
   }
 }
