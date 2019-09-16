@@ -32,7 +32,7 @@
   </ng-template>
 
   <ng-template #actionMenuTmpl let-row="row" let-value="value">
-    <div style="float: right; width: 100%; position: relative;">
+    <div style="float: right; width: 100%; position: relative; top: -4px;">
       <div *ngIf="row.id % 2 === 0">
         <button mat-stroked-button style="width: 95%" (click)="openAssignmentDialog(row.id)">
           <span style="float: left">Assign</span>

@@ -52,7 +52,8 @@ export class CustomDatatableComponent implements OnInit {
         name: 'ACTIONS',
         flexGrow: 1,
         resizeable: false,
-        sortable: false
+        sortable: false,
+        cellClass: 'action-buttons-cell'
       },
       {
         cellTemplate: this.actionMenuTmpl,
@@ -60,14 +61,15 @@ export class CustomDatatableComponent implements OnInit {
         name: 'ACTION MENU',
         flexGrow: 1,
         resizeable: false,
-        sortable: false
+        sortable: false,
+        cellClass: 'action-menu-cell'
       }
     ];
 
     this.columnDefinitions.push(...actionColumns);
     this.columns = this.columnDefinitions;
 
-    console.log(this.columns)
+    console.log(this.columns);
   }
 
   onActivate(event) {
