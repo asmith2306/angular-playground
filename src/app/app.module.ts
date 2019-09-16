@@ -14,6 +14,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import { AssignmentDialogComponent } from './dialogs/assignment-dialog/assignment-dialog.component';
 import { UnlessDirective } from './directives/unless.directive';
+import { CustomDatatableComponent } from './components/custom-datatable/custom-datatable.component';
+import { CatalogComponent } from './components/catalog/catalog.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { UnlessDirective } from './directives/unless.directive';
     RxjsTesterComponent,
     TableComponent,
     AssignmentDialogComponent,
-    UnlessDirective
+    UnlessDirective,
+    CustomDatatableComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,

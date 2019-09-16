@@ -27,6 +27,12 @@
   line-height: 2em !important;
 }
 
+.datatable-body-cell-label {
+  line-height: 2em !important;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .actions-header {
   .datatable-header-cell-template-wrap {
     float: right;
