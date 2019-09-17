@@ -3,15 +3,15 @@ import {Routes, RouterModule} from '@angular/router';
 import {LinkOneComponent} from './components/link-one/link-one.component';
 import {LinkTwoComponent} from './components/link-two/link-two.component';
 import {RxjsTesterComponent} from './components/rxjs-tester/rxjs-tester.component';
-import {TableComponent} from './components/table/table.component';
+import {PostCatalogComponent} from './components/post-catalog/post-catalog.component';
 import {CustomDatatableComponent} from './components/custom-datatable/custom-datatable.component';
-import {CatalogComponent} from './components/catalog/catalog.component';
+import {PeopleCatalogComponent} from './components/people-catalog/people-catalog.component';
 
 const routes: Routes = [
   {path: 'link-one', component: LinkOneComponent},
   {path: 'link-two', component: LinkTwoComponent},
-  {path: 'table', component: TableComponent},
-  {path: 'catalog', component: CatalogComponent},
+  {path: 'post-catalog', component: PostCatalogComponent},
+  {path: 'people-catalog', component: PeopleCatalogComponent},
   {path: 'rxjs-tester', component: RxjsTesterComponent},
   {path: '**', component: LinkOneComponent}
 ];

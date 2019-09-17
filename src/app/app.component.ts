@@ -22,8 +22,8 @@ export class AppComponent implements OnInit {
     this.navLinks.push(
       {label: 'Link 1', path: '/link-one'},
       {label: 'Link 2', path: '/link-two'},
-      {label: 'Table', path: '/table'},
-      {label: 'Catalog', path: '/catalog'}
+      {label: 'Post Catalog', path: '/post-catalog'},
+      {label: 'People Catalog', path: '/people-catalog'}
     );
 
   }

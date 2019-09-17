@@ -9,13 +9,13 @@ import {LinkOneComponent} from './components/link-one/link-one.component';
 import {LinkTwoComponent} from './components/link-two/link-two.component';
 import {RxjsTesterComponent} from './components/rxjs-tester/rxjs-tester.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {TableComponent} from './components/table/table.component';
+import {PostCatalogComponent} from './components/post-catalog/post-catalog.component';
 import {HttpClientModule} from '@angular/common/http';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
-import { AssignmentDialogComponent } from './dialogs/assignment-dialog/assignment-dialog.component';
-import { UnlessDirective } from './directives/unless.directive';
-import { CustomDatatableComponent } from './components/custom-datatable/custom-datatable.component';
-import { CatalogComponent } from './components/catalog/catalog.component';
+import {AssignmentDialogComponent} from './dialogs/assignment-dialog/assignment-dialog.component';
+import {UnlessDirective} from './directives/unless.directive';
+import {CustomDatatableComponent} from './components/custom-datatable/custom-datatable.component';
+import {PeopleCatalogComponent} from './components/people-catalog/people-catalog.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +23,11 @@ import { CatalogComponent } from './components/catalog/catalog.component';
     LinkOneComponent,
     LinkTwoComponent,
     RxjsTesterComponent,
-    TableComponent,
+    PostCatalogComponent,
     AssignmentDialogComponent,
     UnlessDirective,
     CustomDatatableComponent,
-    CatalogComponent
+    PeopleCatalogComponent
   ],
   imports: [
     BrowserModule,

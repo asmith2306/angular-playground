@@ -1,5 +1,11 @@
 import {Component, Input, OnInit, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
-import {TableColumn, TableColumnProp} from '@swimlane/ngx-datatable';
+import {TableColumn} from '@swimlane/ngx-datatable';
+import * as _ from 'lodash';
+import {Person} from '../../models/person';
+
+export interface ExtendedTableColumn extends TableColumn {
+  splitProps?: Array<string>;
+}
 
 @Component({
   selector: 'app-custom-datatable',
@@ -13,9 +19,9 @@ export class CustomDatatableComponent implements OnInit {
   rows = [];
 
   @Input()
-  columnDefinitions = Array<TableColumn>();
+  columnDefinitions = Array<ExtendedTableColumn>();
 
-  columns = Array<TableColumn>();
+  columns = Array<ExtendedTableColumn>();
 
   @Input()
   loading = true;
@@ -36,6 +42,9 @@ export class CustomDatatableComponent implements OnInit {
     // selectedMessage: 'selected'
   };
 
+  // Split template
+  @ViewChild('splitTmpl', {static: true}) splitTmpl: TemplateRef<any>;
+
   // Row action templates
   @ViewChild('actionsTmpl', {static: true}) actionsTmpl: TemplateRef<any>;
   @ViewChild('actionMenuTmpl', {static: true}) actionMenuTmpl: TemplateRef<any>;
@@ -49,8 +58,8 @@ export class CustomDatatableComponent implements OnInit {
       {
         cellTemplate: this.actionsTmpl,
         headerClass: 'actions-header',
-        name: 'ACTIONS',
-        flexGrow: 1,
+        name: 'Actions',
+        flexGrow: 0.5,
         resizeable: false,
         sortable: false,
         cellClass: 'action-buttons-cell'
@@ -58,7 +67,7 @@ export class CustomDatatableComponent implements OnInit {
       {
         cellTemplate: this.actionMenuTmpl,
         headerClass: 'actions-header',
-        name: 'ACTION MENU',
+        name: 'Action Menu',
         flexGrow: 1,
         resizeable: false,
         sortable: false,
@@ -66,10 +75,15 @@ export class CustomDatatableComponent implements OnInit {
       }
     ];
 
+    this.columnDefinitions.forEach(def => {
+      if (def.splitProps) {
+        def.cellTemplate = this.splitTmpl;
+      }
+    });
+
     this.columnDefinitions.push(...actionColumns);
     this.columns = this.columnDefinitions;
 
-    console.log(this.columns);
   }
 
   onActivate(event) {
@@ -101,6 +115,26 @@ export class CustomDatatableComponent implements OnInit {
   }
 
   openAssignmentDialog(id: number) {
-
+    console.log('Assign for row ' + id + ' clicked');
   }
+
+  // updateFilter(event: KeyboardEvent) {
+  //   const val = (event.target as HTMLInputElement).value.toLowerCase();
+  //
+  //   this.filteredPeople = _.cloneDeep(this.allPeople);
+  //
+  //   if (val.length === 0) {
+  //     return;
+  //   }
+  //
+  //   // filter our data
+  //   const temp = this.filteredPeople.filter((person: Person) => {
+  //     return person.age === Number(val);
+  //   });
+  //
+  //   // update the rows
+  //   this.filteredPeople = temp;
+  //   // Whenever the filter changes, always go back to the first page
+  //   this.table.offset = 0;
+  // }
 }

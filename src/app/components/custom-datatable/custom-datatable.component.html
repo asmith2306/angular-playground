@@ -1,10 +1,26 @@
+<!--<div fxLayout>-->
+<!--  <div fxFlex>-->
+<!--    <input-->
+<!--      type="text"-->
+<!--      style="padding:8px;margin:15px auto;width:30%;"-->
+<!--      placeholder="Type to filter the age column..."-->
+<!--      (keyup)="updateFilter($event)"/>-->
+<!--  </div>-->
+<!--  <div fxFlex="0 0 10">-->
+<!--    &lt;!&ndash;      <div style="position: relative; top: 1em; direction: rtl">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <button mat-icon-button>&ndash;&gt;-->
+<!--    &lt;!&ndash;          <mat-icon>delete_outline</mat-icon>&ndash;&gt;-->
+<!--    &lt;!&ndash;        </button>&ndash;&gt;-->
+<!--    &lt;!&ndash;      </div>&ndash;&gt;-->
+<!--  </div>-->
+<!--</div>-->
+
 <ngx-datatable
   class="material"
   [loadingIndicator]="loading"
   [rows]="rows"
   [columns]="columns"
   [columnMode]="'flex'"
-  [headerHeight]="50"
   [footerHeight]="50"
   [rowHeight]="getRowHeight()"
   [scrollbarV]="true"
@@ -15,6 +31,11 @@
   [messages]="tableMessages"
   (activate)="onActivate($event)"
   (mouseleave)="deactivate($event)">
+
+  <!-- Split template -->
+  <ng-template #splitTmpl let-row="row" let-value="value" let-column="column">
+    <div>{{value[column.splitProps[0]]}}, {{value[column.splitProps[1]]}}</div>
+  </ng-template>
 
   <!-- Row action templates -->
   <ng-template #actionsTmpl let-row="row" let-value="value">
@@ -56,5 +77,4 @@
     </div>
   </ng-template>
 </ngx-datatable>
-
 
