@@ -2,63 +2,93 @@
 @import '~@swimlane/ngx-datatable/themes/material.css';
 @import '~@swimlane/ngx-datatable/assets/icons.css';
 
-.ngx-datatable {
-  height: 84vh;
+$header-color: #f1f1f1;
+
+.custom-datatable {
+
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
   border-radius: 8px;
-}
 
-.datatable-header {
-  background-color: lightgray;
-  border: 0 !important;
-}
+  .action-bar {
+    border-radius: 8px 8px 0px 0px;
+    background-color: lightgrey;
 
-.datatable-header-cell {
-  background-color: lightgrey !important;
-  font-size: 14px !important;
-  padding: 6px 18px !important;
-}
+    .action-bar-input {
+      padding: 0 0 0 32px;
+    }
 
-.datatable-body {
-  overflow-x: hidden;
-}
+    .action-bar-buttons {
+      position: relative;
+      top: .8em;
+      right: .8em;
 
-.datatable-body-cell {
-  line-height: 2em !important;
-}
-
-.datatable-body-cell-label {
-  line-height: 2em !important;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.actions-header {
-  .datatable-header-cell-template-wrap {
-    float: right;
-    margin-right: 12px;
+      > button:hover {
+        color: white;
+        cursor: pointer;
+      }
+    }
   }
-}
 
-.action-buttons-cell {
+  .ngx-datatable {
+    height: 84vh;
+    box-shadow: unset;
+    border-radius: 0px 0px 8px 8px;
+  }
+
+  .datatable-header {
+    background-color: $header-color;
+    border: 0 !important;
+  }
+
+  .datatable-header-cell {
+    background-color: $header-color !important;
+    font-size: 14px !important;
+    padding: 6px 18px !important;
+  }
+
+  .datatable-body {
+    overflow-x: hidden;
+  }
+
+  .datatable-body-cell {
+    line-height: 2em !important;
+  }
+
   .datatable-body-cell-label {
-    overflow: visible;
+    line-height: 2em !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .actions-header {
+    .datatable-header-cell-template-wrap {
+      float: right;
+      margin-right: 12px;
+    }
+  }
+
+  .action-buttons-cell {
+    .datatable-body-cell-label {
+      overflow: visible;
+    }
+  }
+
+  .action-menu-cell {
+    .datatable-body-cell-label {
+      overflow: visible;
+    }
+  }
+
+  .datatable-checkbox input[type='checkbox']:checked:before {
+    border-color: #3f51b5 !important;
+  }
+
+  .datatable-checkbox input[type='checkbox']:checked:after {
+    border-color: #3f51b5 !important;
   }
 }
-
-.action-menu-cell {
-  .datatable-body-cell-label {
-    overflow: visible;
-  }
-}
-
-.datatable-checkbox input[type='checkbox']:checked:before {
-  border-color: #3f51b5 !important;
-}
-
-.datatable-checkbox input[type='checkbox']:checked:after {
-  border-color: #3f51b5 !important;
-}
-
 
 
 

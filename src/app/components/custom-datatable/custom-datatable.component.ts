@@ -1,7 +1,5 @@
-import {Component, Input, OnInit, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {TableColumn} from '@swimlane/ngx-datatable';
-import * as _ from 'lodash';
-import {Person} from '../../models/person';
 
 export interface ExtendedTableColumn extends TableColumn {
   splitProps?: Array<string>;
@@ -48,6 +46,9 @@ export class CustomDatatableComponent implements OnInit {
   // Row action templates
   @ViewChild('actionsTmpl', {static: true}) actionsTmpl: TemplateRef<any>;
   @ViewChild('actionMenuTmpl', {static: true}) actionMenuTmpl: TemplateRef<any>;
+
+  @Output()
+  deleteEmitter = new EventEmitter<number>();
 
   constructor() {
   }
@@ -120,6 +121,8 @@ export class CustomDatatableComponent implements OnInit {
 
   deleteClicked(id: number) {
     console.log('Delete row ' + id + ' clicked');
+    this.deleteEmitter.emit(id);
+    this.selected = [];
   }
 
   openAssignmentDialog(id: number) {

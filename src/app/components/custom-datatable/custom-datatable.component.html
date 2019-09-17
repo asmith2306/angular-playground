@@ -1,79 +1,88 @@
-<!--<div fxLayout>-->
-<!--  <div fxFlex>-->
-<!--    <input-->
-<!--      type="text"-->
-<!--      style="padding:8px;margin:15px auto;width:30%;"-->
-<!--      placeholder="Type to filter the age column..."-->
-<!--      (keyup)="updateFilter($event)"/>-->
-<!--  </div>-->
-<!--  <div fxFlex="0 0 10">-->
-<!--    &lt;!&ndash;      <div style="position: relative; top: 1em; direction: rtl">&ndash;&gt;-->
-<!--    &lt;!&ndash;        <button mat-icon-button>&ndash;&gt;-->
-<!--    &lt;!&ndash;          <mat-icon>delete_outline</mat-icon>&ndash;&gt;-->
-<!--    &lt;!&ndash;        </button>&ndash;&gt;-->
-<!--    &lt;!&ndash;      </div>&ndash;&gt;-->
-<!--  </div>-->
-<!--</div>-->
-
-<ngx-datatable
-  class="material"
-  [loadingIndicator]="loading"
-  [rows]="rows"
-  [columns]="columns"
-  [columnMode]="'flex'"
-  [footerHeight]="50"
-  [rowHeight]="getRowHeight()"
-  [scrollbarV]="true"
-  [selected]="selected"
-  [selectionType]="'checkbox'"
-  (select)="onSelect($event)"
-  [messages]="tableMessages"
-  (activate)="onActivate($event)"
-  (mouseleave)="deactivate($event)">
-
-  <!-- Split template -->
-  <ng-template #splitTmpl let-row="row" let-value="value" let-column="column">
-    <div>{{value[column.splitProps[0]]}}, {{value[column.splitProps[1]]}}</div>
-  </ng-template>
-
-  <!-- Row action templates -->
-  <ng-template #actionsTmpl let-row="row" let-value="value">
-    <div style="float: right; position: relative; top: -6px">
-      <button mat-icon-button (click)="editClicked(row.id)">
-        <mat-icon>edit_outline</mat-icon>
-      </button>
-      <button mat-icon-button (click)="copyClicked(row.id)">
-        <mat-icon>file_copy_outline</mat-icon>
-      </button>
-      <button mat-icon-button (click)="deleteClicked(row.id)">
-        <mat-icon>delete_outline</mat-icon>
-      </button>
-    </div>
-  </ng-template>
-
-  <ng-template #actionMenuTmpl let-row="row" let-value="value">
-    <div style="float: right; width: 100%; position: relative; top: -4px;">
-      <div *ngIf="row.id % 2 === 0">
-        <button mat-stroked-button style="width: 95%" (click)="openAssignmentDialog(row.id)">
-          <span style="float: left">Assign</span>
-          <mat-icon style="float: right; position: relative; top: 0.15em; right: -0.2em;">compare_arrows_outline
-          </mat-icon>
-        </button>
+<div class="custom-datatable">
+  <div class="action-bar">
+    <div fxLayout>
+      <div fxFlex class="action-bar-input">
+        <input
+          type="text"
+          style="padding:8px;margin:15px auto;width:30%;"
+          placeholder="Type to filter the age column..."
+          (keyup)="updateFilter($event)"/>
       </div>
-
-      <div *ngIf="row.id % 2 !== 0">
-        <button mat-stroked-button style="width: 95%;"
-                [ngStyle]="row.id === activeRowNumber && {'background-color':'#e8e8e8'}"
-                [matMenuTriggerFor]="menu">
-          <span style="float: left">Menu</span>
-          <mat-icon style="float: right; position: relative; top: 0.15em; right: -0.5em;">arrow_drop_down</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu" xPosition="before">
-          <button mat-menu-item>Item 1</button>
-          <button mat-menu-item>Item 2</button>
-        </mat-menu>
+      <div fxFlex="0 0 10">
+        <div class="action-bar-buttons" [ngClass]="{'disable-div' : selected.length === 0}">
+          <button mat-icon-button (click)="editClicked(row.id)" [disabled]="selected.length === 0">
+            <mat-icon>edit_outline</mat-icon>
+          </button>
+          <button mat-icon-button (click)="copyClicked(row.id)" [disabled]="selected.length === 0">
+            <mat-icon>file_copy_outline</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteClicked(row.id)" [disabled]="selected.length === 0">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
-  </ng-template>
-</ngx-datatable>
+  </div>
+  <ngx-datatable
+    class="material"
+    [loadingIndicator]="loading"
+    [rows]="rows"
+    [columns]="columns"
+    [columnMode]="'flex'"
+    [footerHeight]="50"
+    [rowHeight]="getRowHeight()"
+    [scrollbarV]="true"
+    [selected]="selected"
+    [selectionType]="'checkbox'"
+    (select)="onSelect($event)"
+    [messages]="tableMessages"
+    (activate)="onActivate($event)"
+    (mouseleave)="deactivate($event)">
+
+    <!-- Split template -->
+    <ng-template #splitTmpl let-row="row" let-value="value" let-column="column">
+      <div>{{value[column.splitProps[0]]}}, {{value[column.splitProps[1]]}}</div>
+    </ng-template>
+
+    <!-- Row action templates -->
+    <ng-template #actionsTmpl let-row="row" let-value="value">
+      <div style="float: right; position: relative; top: -6px">
+        <button mat-icon-button (click)="editClicked(row.id)">
+          <mat-icon>edit_outline</mat-icon>
+        </button>
+        <button mat-icon-button (click)="copyClicked(row.id)">
+          <mat-icon>file_copy_outline</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteClicked(row.id)">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </div>
+    </ng-template>
+
+    <ng-template #actionMenuTmpl let-row="row" let-value="value">
+      <div style="float: right; width: 100%; position: relative; top: -4px;">
+        <div *ngIf="row.id % 2 === 0">
+          <button mat-stroked-button style="width: 95%" (click)="openAssignmentDialog(row.id)">
+            <span style="float: left">Assign</span>
+            <mat-icon style="float: right; position: relative; top: 0.15em; right: -0.2em;">compare_arrows_outline
+            </mat-icon>
+          </button>
+        </div>
+
+        <div *ngIf="row.id % 2 !== 0">
+          <button mat-stroked-button style="width: 95%;"
+                  [ngStyle]="row.id === activeRowNumber && {'background-color':'#e8e8e8'}"
+                  [matMenuTriggerFor]="menu">
+            <span style="float: left">Menu</span>
+            <mat-icon style="float: right; position: relative; top: 0.15em; right: -0.5em;">arrow_drop_down</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </div>
+      </div>
+    </ng-template>
+  </ngx-datatable>
+</div>
 

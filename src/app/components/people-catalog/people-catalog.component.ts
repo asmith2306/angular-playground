@@ -62,32 +62,9 @@ export class PeopleCatalogComponent implements OnInit {
         prop: 'age'
       }];
 
-    // this.columnDefinitions = [
-    //   {
-    //     name: 'Id',
-    //     flexGrow: 0.5,
-    //     resizeable: false,
-    //     prop: 'id'
-    //   },
-    //   {
-    //     name: 'User Id',
-    //     flexGrow: 0.5,
-    //     resizeable: false,
-    //     prop: 'userId'
-    //   },
-    //   {
-    //     name: 'Title',
-    //     flexGrow: 2,
-    //     resizeable: false,
-    //     prop: 'title'
-    //   },
-    //   {
-    //     name: 'Body',
-    //     flexGrow: 3,
-    //     resizeable: false,
-    //     prop: 'body'
-    //   }
-    // ];
   }
 
+  deletePerson(id: number) {
+    this.allPeople = this.allPeople.filter(person => person.id !== id);
+  }
 }
