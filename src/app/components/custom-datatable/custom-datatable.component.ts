@@ -68,7 +68,7 @@ export class CustomDatatableComponent implements OnInit {
         cellTemplate: this.actionMenuTmpl,
         headerClass: 'actions-header',
         name: 'Action Menu',
-        flexGrow: 1,
+        flexGrow: 0.5,
         resizeable: false,
         sortable: false,
         cellClass: 'action-menu-cell'
