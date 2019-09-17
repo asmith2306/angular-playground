@@ -51,6 +51,15 @@
   }
 }
 
+.datatable-checkbox input[type='checkbox']:checked:before {
+  border-color: #3f51b5 !important;
+}
+
+.datatable-checkbox input[type='checkbox']:checked:after {
+  border-color: #3f51b5 !important;
+}
+
+
 
 
 

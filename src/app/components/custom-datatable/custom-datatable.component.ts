@@ -28,7 +28,7 @@ export class CustomDatatableComponent implements OnInit {
 
   activeRowNumber = 0;
 
-  selected = [];
+  selected = Array<ExtendedTableColumn>();
 
   tableMessages = {
     // Message to show when array is presented
@@ -39,7 +39,7 @@ export class CustomDatatableComponent implements OnInit {
     totalMessage: 'total',
 
     // Footer selected message
-    // selectedMessage: 'selected'
+    selectedMessage: 'selected'
   };
 
   // Split template
@@ -49,11 +49,18 @@ export class CustomDatatableComponent implements OnInit {
   @ViewChild('actionsTmpl', {static: true}) actionsTmpl: TemplateRef<any>;
   @ViewChild('actionMenuTmpl', {static: true}) actionMenuTmpl: TemplateRef<any>;
 
-
   constructor() {
   }
 
   ngOnInit() {
+    const checkboxColumn = {
+      flexGrow: 0.25,
+      resizeable: false,
+      sortable: false,
+      checkboxable: true,
+      headerCheckboxable: true
+    };
+
     const actionColumns = [
       {
         cellTemplate: this.actionsTmpl,
@@ -81,6 +88,7 @@ export class CustomDatatableComponent implements OnInit {
       }
     });
 
+    this.columnDefinitions.unshift(checkboxColumn);
     this.columnDefinitions.push(...actionColumns);
     this.columns = this.columnDefinitions;
 
@@ -99,7 +107,7 @@ export class CustomDatatableComponent implements OnInit {
   }
 
   onSelect($event: any) {
-
+    console.log($event);
   }
 
   editClicked(id: number) {
