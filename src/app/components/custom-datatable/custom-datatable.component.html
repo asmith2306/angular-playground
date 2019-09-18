@@ -10,14 +10,14 @@
       </div>
       <div fxFlex="0 0 16">
         <div class="action-bar-buttons" [ngClass]="{'disable-div' : selected.length === 0}">
-          <button mat-icon-button (click)="deleteClicked()" [disabled]="selected.length === 0">
-            <mat-icon>delete_outline</mat-icon>
+          <button mat-icon-button (click)="editClicked()" [disabled]="selected.length === 0 || selected.length > 1">
+            <mat-icon>edit_outline</mat-icon>
           </button>
           <button mat-icon-button (click)="copyClicked()" [disabled]="selected.length === 0 || selected.length > 1">
             <mat-icon>file_copy_outline</mat-icon>
           </button>
-          <button mat-icon-button (click)="editClicked()" [disabled]="selected.length === 0 || selected.length > 1">
-            <mat-icon>edit_outline</mat-icon>
+          <button mat-icon-button (click)="deleteClicked()" [disabled]="selected.length === 0">
+            <mat-icon>delete_outline</mat-icon>
           </button>
         </div>
       </div>
