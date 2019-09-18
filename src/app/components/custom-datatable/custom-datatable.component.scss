@@ -22,7 +22,8 @@ $header-color: #f1f1f1;
     .action-bar-buttons {
       position: relative;
       top: .8em;
-      right: .8em;
+      right: 2.4em;
+      direction: rtl;
 
       > button:hover {
         color: white;
@@ -32,7 +33,7 @@ $header-color: #f1f1f1;
   }
 
   .ngx-datatable {
-    height: 84vh;
+    height: 80vh;
     box-shadow: unset !important;
     border-radius: 0px 0px 8px 8px;
   }
