@@ -10,13 +10,13 @@
       </div>
       <div fxFlex="0 0 10">
         <div class="action-bar-buttons" [ngClass]="{'disable-div' : selected.length === 0}">
-          <button mat-icon-button (click)="editClicked(row.id)" [disabled]="selected.length === 0">
+          <button mat-icon-button (click)="editClicked()" [disabled]="selected.length === 0 || selected.length > 1">
             <mat-icon>edit_outline</mat-icon>
           </button>
-          <button mat-icon-button (click)="copyClicked(row.id)" [disabled]="selected.length === 0">
+          <button mat-icon-button (click)="copyClicked()" [disabled]="selected.length === 0 || selected.length > 1">
             <mat-icon>file_copy_outline</mat-icon>
           </button>
-          <button mat-icon-button (click)="deleteClicked(row.id)" [disabled]="selected.length === 0">
+          <button mat-icon-button (click)="deleteClicked()" [disabled]="selected.length === 0">
             <mat-icon>delete_outline</mat-icon>
           </button>
         </div>
@@ -47,13 +47,13 @@
     <!-- Row action templates -->
     <ng-template #actionsTmpl let-row="row" let-value="value">
       <div style="float: right; position: relative; top: -6px">
-        <button mat-icon-button (click)="editClicked(row.id)">
+        <button mat-icon-button (click)="editClicked()">
           <mat-icon>edit_outline</mat-icon>
         </button>
-        <button mat-icon-button (click)="copyClicked(row.id)">
+        <button mat-icon-button (click)="copyClicked()">
           <mat-icon>file_copy_outline</mat-icon>
         </button>
-        <button mat-icon-button (click)="deleteClicked(row.id)">
+        <button mat-icon-button (click)="deleteClicked()">
           <mat-icon>delete_outline</mat-icon>
         </button>
       </div>
@@ -85,4 +85,3 @@
     </ng-template>
   </ngx-datatable>
 </div>
-

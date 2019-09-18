@@ -64,7 +64,11 @@ export class PeopleCatalogComponent implements OnInit {
 
   }
 
-  deletePerson(id: number) {
-    this.allPeople = this.allPeople.filter(person => person.id !== id);
+  deletePeople(people: Array<Person>) {
+    if (people.length > 1) {
+      this.allPeople = this.allPeople.filter(i => !people.map(j => j.id).includes(i.id));
+    } else {
+      this.allPeople = this.allPeople.filter(person => person.id !== people[0].id);
+    }
   }
 }

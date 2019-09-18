@@ -26,7 +26,9 @@ export class CustomDatatableComponent implements OnInit {
 
   activeRowNumber = 0;
 
-  selected = Array<ExtendedTableColumn>();
+  selected = [];
+
+  noSelection = true;
 
   tableMessages = {
     // Message to show when array is presented
@@ -48,7 +50,7 @@ export class CustomDatatableComponent implements OnInit {
   @ViewChild('actionMenuTmpl', {static: true}) actionMenuTmpl: TemplateRef<any>;
 
   @Output()
-  deleteEmitter = new EventEmitter<number>();
+  deleteEmitter = new EventEmitter<any[]>();
 
   constructor() {
   }
@@ -63,15 +65,6 @@ export class CustomDatatableComponent implements OnInit {
     };
 
     const actionColumns = [
-      {
-        cellTemplate: this.actionsTmpl,
-        headerClass: 'actions-header',
-        name: 'Actions',
-        flexGrow: 0.5,
-        resizeable: false,
-        sortable: false,
-        cellClass: 'action-buttons-cell'
-      },
       {
         cellTemplate: this.actionMenuTmpl,
         headerClass: 'actions-header',
@@ -107,21 +100,24 @@ export class CustomDatatableComponent implements OnInit {
     return 56;
   }
 
-  onSelect($event: any) {
-    console.log($event);
+  onSelect({selected}) {
+    this.selected = selected;
   }
 
-  editClicked(id: number) {
-    console.log('Edit row ' + id + ' clicked');
+  editClicked() {
+    if (this.selected.length > 0) {
+      console.log(this.selected[0]);
+      console.log('Edit row ' + this.selected[0].id + ' clicked');
+    } else {
+
+    }
   }
 
-  copyClicked(id: number) {
-    console.log('Copy row ' + id + ' clicked');
+  copyClicked() {
   }
 
-  deleteClicked(id: number) {
-    console.log('Delete row ' + id + ' clicked');
-    this.deleteEmitter.emit(id);
+  deleteClicked() {
+    this.deleteEmitter.emit(this.selected);
     this.selected = [];
   }
 
