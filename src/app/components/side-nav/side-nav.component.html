@@ -1,0 +1,22 @@
+<div class="side-nav" [ngClass]="{'main-side-bar-expanded' : sideNavExpanded}" >
+  <div fxLayout="column" style="height: 100%" >
+    <div fxFlex="1 0 90" >
+      <div *ngFor="let sideNavItem of sideNavItems" class="side-nav-item" (click)="doRouteLink(sideNavItem.routerLink)">
+        <button mat-icon-button>
+          <mat-icon>{{sideNavItem.icon}}</mat-icon>
+        </button>
+        <span style="position: absolute; top: 11px; margin-left: 2px; opacity: 0"
+              [ngClass]="{'show' : sideNavExpanded}">{{sideNavItem.text}}</span>
+        <mat-divider style="margin: 0 8px 0 8px"></mat-divider>
+      </div>
+
+    </div>
+    <div fxFlex="0 0 auto">
+      <button [disableRipple]="true" mat-icon-button>
+        <mat-icon (click)="doSideNavExpansion()" class="expand-icon"
+                  [ngClass]="{'expand-icon-transition' : sideNavExpanded}">all_out
+        </mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

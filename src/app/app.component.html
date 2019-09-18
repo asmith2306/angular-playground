@@ -1,31 +1,4 @@
-<div class="side-bar" [ngClass]="{'main-side-bar-expanded' : sideNavExpanded}">
-  <div fxLayout="column" style="height: 100%">
-    <div fxFlex="1 0 90">
-      <div style="position: relative">
-        <button mat-icon-button>
-          <mat-icon>home</mat-icon>
-        </button>
-        <span style="position: absolute; top: 13px; margin-left: 2px; opacity: 0"
-              [ngClass]="{'show' : sideNavExpanded}">Home</span>
-      </div>
-
-      <div style="position: relative">
-        <button mat-icon-button>
-          <mat-icon>search</mat-icon>
-        </button>
-        <span style="position: absolute; top: 10px; margin-left: 2px; opacity: 0"
-              [ngClass]="{'show' : sideNavExpanded}">Search</span>
-      </div>
-    </div>
-    <div fxFlex="0 0 auto">
-      <button [disableRipple]="true" mat-icon-button>
-        <mat-icon (click)="doSideNavExpansion()" class="expand-icon"
-                  [ngClass]="{'expand-icon-transition' : sideNavExpanded}">all_out
-        </mat-icon>
-      </button>
-    </div>
-  </div>
-</div>
+<app-side-nav></app-side-nav>
 <div class="main">
   <div class="main-content">
     <div class="main-nav-bar">
@@ -47,5 +20,4 @@
     </div>
     <router-outlet></router-outlet>
   </div>
-
 </div>

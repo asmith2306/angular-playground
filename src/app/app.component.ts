@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 
 class NavLink {
   label: string;
@@ -13,10 +13,7 @@ class NavLink {
 })
 export class AppComponent implements OnInit {
 
-  title = 'demo';
   navLinks = new Array<NavLink>();
-
-  sideNavExpanded = false;
 
   ngOnInit(): void {
     this.navLinks.push(
@@ -28,7 +25,5 @@ export class AppComponent implements OnInit {
 
   }
 
-  doSideNavExpansion() {
-    this.sideNavExpanded = !this.sideNavExpanded;
-  }
+
 }

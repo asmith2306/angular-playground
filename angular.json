@@ -29,7 +29,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/styles/common.scss"
+              "src/assets/styles/common.scss",
+              "src/assets/styles/material-overrides.scss"
             ],
             "scripts": []
           },

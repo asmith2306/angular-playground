@@ -16,6 +16,7 @@ import {AssignmentDialogComponent} from './dialogs/assignment-dialog/assignment-
 import {UnlessDirective} from './directives/unless.directive';
 import {CustomDatatableComponent} from './components/custom-datatable/custom-datatable.component';
 import {PeopleCatalogComponent} from './components/people-catalog/people-catalog.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {PeopleCatalogComponent} from './components/people-catalog/people-catalog
     AssignmentDialogComponent,
     UnlessDirective,
     CustomDatatableComponent,
-    PeopleCatalogComponent
+    PeopleCatalogComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,
