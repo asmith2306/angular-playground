@@ -1,9 +1,9 @@
-import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Person} from '../../models/person';
 import {PeopleService} from '../../services/people.service';
-import {PostService} from '../../services/post.service';
 import {Post} from '../../models/post';
 import {ExtendedTableColumn} from '../custom-datatable/custom-datatable.component';
+import {ToolbarService} from '../toolbar/toolbar.service';
 
 @Component({
   selector: 'app-catalog',
@@ -18,15 +18,12 @@ export class PeopleCatalogComponent implements OnInit {
 
   tableLoading = true;
 
-  constructor(private peopleService: PeopleService, private postService: PostService) {
+  constructor(private peopleService: PeopleService,
+              private toolbarService: ToolbarService) {
   }
 
   ngOnInit() {
-
-    this.postService.getAll().subscribe(res => {
-      this.allPosts = res;
-      this.tableLoading = false;
-    });
+    this.toolbarService.$title.next('People');
 
     this.peopleService.get().subscribe(res => {
       this.allPeople = res;

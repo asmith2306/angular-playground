@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 export interface SideNavItem {
@@ -14,16 +14,16 @@ export interface SideNavItem {
 })
 export class SideNavComponent implements OnInit {
 
-  sideNavExpanded = false;
+  @Input()
   sideNavItems: Array<SideNavItem>;
+
+  sideNavExpanded = false;
 
   constructor(private router: Router) {
   }
 
   ngOnInit() {
-    this.sideNavItems = new Array<SideNavItem>();
-    this.sideNavItems.push({icon: 'home', text: 'Home', routerLink: 'link-one'});
-    this.sideNavItems.push({icon: 'search', text: 'Search', routerLink: 'link-two'});
+
   }
 
   doSideNavExpansion() {
@@ -32,5 +32,9 @@ export class SideNavComponent implements OnInit {
 
   doRouteLink(routerLink: string) {
     this.router.navigateByUrl(routerLink);
+  }
+
+  isActive(sideNavItem: SideNavItem) {
+    return this.router.isActive(sideNavItem.routerLink, false);
   }
 }

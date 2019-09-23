@@ -1,6 +1,6 @@
 .side-nav {
   background-color: rgba(255, 255, 255, 0.96);
-  box-shadow: -2px 49px 6px 2px lightgrey; // vertical height of 49 to clear the nav bar.
+  box-shadow: -2px 0px 6px 2px lightgrey; // vertical height of 49 to clear the nav bar.
   height: 100%;
   min-width: 42px;
   position: absolute;
@@ -23,6 +23,10 @@
   .side-nav-item {
     position: relative;
     cursor: pointer;
+  }
+
+  .side-nav-item-active {
+    color: darkorange;
   }
 }
 

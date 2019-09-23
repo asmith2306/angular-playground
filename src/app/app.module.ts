@@ -17,6 +17,9 @@ import {UnlessDirective} from './directives/unless.directive';
 import {CustomDatatableComponent} from './components/custom-datatable/custom-datatable.component';
 import {PeopleCatalogComponent} from './components/people-catalog/people-catalog.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { ToolbarMenuComponent } from './components/toolbar-menu/toolbar-menu.component';
+import { RhsAnchorDirective } from './components/toolbar/rhs-anchor.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
     UnlessDirective,
     CustomDatatableComponent,
     PeopleCatalogComponent,
-    SideNavComponent
+    SideNavComponent,
+    ToolbarComponent,
+    ToolbarMenuComponent,
+    RhsAnchorDirective
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AssignmentDialogComponent]
+  entryComponents: [AssignmentDialogComponent, ToolbarMenuComponent]
 })
 export class AppModule {
 }

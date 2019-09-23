@@ -1,29 +1,27 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-
-class NavLink {
-  label: string;
-  path: string;
-}
+import {Component, OnInit} from '@angular/core';
+import {ToolbarService} from './components/toolbar/toolbar.service';
+import {ToolbarMenuComponent} from './components/toolbar-menu/toolbar-menu.component';
+import {SideNavItem} from './components/side-nav/side-nav.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
 
-  navLinks = new Array<NavLink>();
+  sideNavItems: Array<SideNavItem>;
 
-  ngOnInit(): void {
-    this.navLinks.push(
-      {label: 'Link 1', path: '/link-one'},
-      {label: 'Link 2', path: '/link-two'},
-      {label: 'Post Catalog', path: '/post-catalog'},
-      {label: 'People Catalog', path: '/people-catalog'}
-    );
+  constructor(private toolbarService: ToolbarService) {
 
   }
 
+  ngOnInit(): void {
+    this.toolbarService.$rhsTool.next(ToolbarMenuComponent);
+
+    this.sideNavItems = new Array<SideNavItem>();
+    this.sideNavItems.push({icon: 'local_post_office', text: 'Posts', routerLink: 'post-catalog'});
+    this.sideNavItems.push({icon: 'emoji_people', text: 'People', routerLink: 'people-catalog'});
+  }
 
 }

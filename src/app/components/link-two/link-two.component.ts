@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ToolbarService} from '../toolbar/toolbar.service';
 
 @Component({
   selector: 'app-link-two',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LinkTwoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toolbarService: ToolbarService) {
+  }
 
   ngOnInit() {
+    this.toolbarService.reset();
+
+    this.toolbarService.$title.next('Link Two');
   }
 
 }

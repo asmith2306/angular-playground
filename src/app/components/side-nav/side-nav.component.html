@@ -1,7 +1,11 @@
 <div class="side-nav" [ngClass]="{'main-side-bar-expanded' : sideNavExpanded}" >
   <div fxLayout="column" style="height: 100%" >
     <div fxFlex="1 0 90" >
-      <div *ngFor="let sideNavItem of sideNavItems" class="side-nav-item" (click)="doRouteLink(sideNavItem.routerLink)">
+      <div *ngFor="let sideNavItem of sideNavItems"
+           class="side-nav-item"
+           (click)="doRouteLink(sideNavItem.routerLink)"
+           [ngClass]="{'side-nav-item-active' : isActive(sideNavItem)}"
+      >
         <button mat-icon-button>
           <mat-icon>{{sideNavItem.icon}}</mat-icon>
         </button>

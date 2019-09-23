@@ -1,0 +1,17 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>call_received</mat-icon>
+    <span>Import</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>call_made</mat-icon>
+    <span>Export</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>restore</mat-icon>
+    <span>Reset</span>
+  </button>
+</mat-menu>

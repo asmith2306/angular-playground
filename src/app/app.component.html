@@ -1,23 +1,7 @@
-<app-side-nav></app-side-nav>
+<app-side-nav [sideNavItems]="sideNavItems"></app-side-nav>
 <div class="main">
   <div class="main-content">
-    <div class="main-nav-bar">
-      <nav mat-tab-nav-bar>
-        <a mat-tab-link [disableRipple]="true"
-           *ngFor="let link of navLinks"
-           [routerLink]="link.path"
-           routerLinkActive #rla="routerLinkActive"
-           [active]="rla.isActive">
-          <button mat-button [ngClass]="{'nav-button-active' : rla.isActive}">{{link.label}}</button>
-        </a>
-
-        <div class="flex-spacer"></div>
-
-        <button [disableRipple]="true" mat-button routerLink="/rxjs-tester">RxJS tester</button>
-        <button [disableRipple]="true" mat-button>Button 2</button>
-        <button [disableRipple]="true" mat-button>Button 3</button>
-      </nav>
-    </div>
+    <app-toolbar></app-toolbar>
     <router-outlet></router-outlet>
   </div>
 </div>

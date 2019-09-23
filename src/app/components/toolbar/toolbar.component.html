@@ -1,0 +1,23 @@
+<div class="main-toolbar">
+  <mat-toolbar>
+    <div *ngIf="showBackButton">
+      <button mat-icon-button>
+        <mat-icon>keyboard_backspace</mat-icon>
+      </button>
+    </div>
+    <div>{{toolbarTitle}}</div>
+    <div class="flex-spacer"></div>
+    <ng-template appRhsAnchor></ng-template>
+  </mat-toolbar>
+</div>
+<div class="main-nav-bar">
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link [disableRipple]="true"
+       *ngFor="let link of navLinks"
+       [routerLink]="link.path"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+      <button mat-button [ngClass]="{'nav-button-active' : rla.isActive}">{{link.label}}</button>
+    </a>
+  </nav>
+</div>

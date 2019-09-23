@@ -1,9 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {Post} from '../../models/post';
-import {MatSnackBarService} from '../../services/mat-snackbar.service';
 import {ExtendedTableColumn} from '../custom-datatable/custom-datatable.component';
-import {Person} from '../../models/person';
+import {ToolbarService} from '../toolbar/toolbar.service';
 
 @Component({
   selector: 'app-post-catalog',
@@ -18,10 +17,12 @@ export class PostCatalogComponent implements OnInit {
 
   tableLoading = true;
 
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService,
+              private toolbarService: ToolbarService) {
   }
 
   ngOnInit() {
+    this.toolbarService.$title.next('Posts');
 
     this.postService.getAll().subscribe(res => {
       this.allPosts = res;

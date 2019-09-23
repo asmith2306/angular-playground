@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'post-catalog', component: PostCatalogComponent},
   {path: 'people-catalog', component: PeopleCatalogComponent},
   {path: 'rxjs-tester', component: RxjsTesterComponent},
-  {path: '**', component: LinkOneComponent}
+  {path: '**', component: PostCatalogComponent}
 ];
 
 @NgModule({
