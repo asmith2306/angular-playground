@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
     this.sideNavItems = new Array<SideNavItem>();
     this.sideNavItems.push({icon: 'local_post_office', text: 'Posts', routerLink: 'post-catalog'});
     this.sideNavItems.push({icon: 'emoji_people', text: 'People', routerLink: 'people-catalog'});
+    this.sideNavItems.push({icon: 'swap_horizontal_circle', text: 'Input/Output', routerLink: 'input-output-table'});
   }
 
 }

@@ -20,6 +20,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ToolbarMenuComponent } from './components/toolbar-menu/toolbar-menu.component';
 import { RhsAnchorDirective } from './components/toolbar/rhs-anchor.directive';
+import { InputOutputTableComponent } from './components/input-output-table/input-output-table.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RhsAnchorDirective } from './components/toolbar/rhs-anchor.directive';
     SideNavComponent,
     ToolbarComponent,
     ToolbarMenuComponent,
-    RhsAnchorDirective
+    RhsAnchorDirective,
+    InputOutputTableComponent
   ],
   imports: [
     BrowserModule,

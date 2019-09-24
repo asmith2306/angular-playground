@@ -13,7 +13,6 @@ import {ToolbarService} from '../toolbar/toolbar.service';
 export class PeopleCatalogComponent implements OnInit {
 
   allPeople: Array<Person>;
-  allPosts: Array<Post>;
   columnDefinitions = Array<ExtendedTableColumn>();
 
   tableLoading = true;

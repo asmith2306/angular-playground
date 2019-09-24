@@ -1,0 +1,23 @@
+<div class="screen-content" style="padding-top: 24px">
+
+  <mat-card>
+    <div style="padding-bottom: 16px;">Logic</div>
+    <mat-divider></mat-divider>
+    <div fxLayout class="table-container">
+      <div fxFlex class="inputTable">
+        <ngx-datatable
+          class="material"
+          [rows]="inputRows"
+          [columns]="inputColumnDefinitions"
+          [columnMode]="'flex'"
+          [footerHeight]="50"
+          [rowHeight]="getRowHeight()"
+          [scrollbarV]="true"></ngx-datatable>
+
+      </div>
+      <div fxFlex class="outputTable"></div>
+    </div>
+  </mat-card>
+
+
+</div>

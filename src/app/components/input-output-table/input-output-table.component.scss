@@ -1,0 +1,11 @@
+.table-container {
+  padding-top: 16px;
+
+  .inputTable {
+    .ngx-datatable {
+      height: 80vh;
+      box-shadow: unset !important;
+      border-radius: 0px 0px 8px 8px;
+    }
+  }
+}
