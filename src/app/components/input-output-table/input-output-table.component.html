@@ -1,23 +1,37 @@
 <div class="screen-content" style="padding-top: 24px">
 
-  <mat-card>
-    <div style="padding-bottom: 16px;">Logic</div>
+  <div class="input-output-container">
+    <div class="table-header">Logic</div>
     <mat-divider></mat-divider>
-    <div fxLayout class="table-container">
-      <div fxFlex class="inputTable">
-        <ngx-datatable
-          class="material"
-          [rows]="inputRows"
-          [columns]="inputColumnDefinitions"
-          [columnMode]="'flex'"
-          [footerHeight]="50"
-          [rowHeight]="getRowHeight()"
-          [scrollbarV]="true"></ngx-datatable>
+    <div class="table-container">
 
-      </div>
-      <div fxFlex class="outputTable"></div>
+      <ngx-datatable
+        class="material"
+        [rows]="rows"
+        [columns]="columnDefinitions"
+        [columnMode]="'force'"
+        [footerHeight]="50"
+        [rowHeight]="getRowHeight()"
+        [scrollbarV]="true">
+
+        <ng-template #headerTmpl let-column="column" let-sort="sortFn">
+          <div (click)="setColumnIndex(column)">
+            <div (click)="sort()" style="font-weight: bolder">{{ column.name }}</div>
+            <div>{{column.type}}</div>
+          </div>
+        </ng-template>
+
+        <ng-template #inputValueTmpl let-row="row" let-value="value" let-column="column">
+          <div>{{row.inputs[column.index].value}}</div>
+        </ng-template>
+
+        <ng-template #outputValueTmpl let-row="row" let-value="value" let-column="column">
+          <div>{{row.outputs[column.index].value}}</div>
+        </ng-template>
+
+      </ngx-datatable>
+
     </div>
-  </mat-card>
-
+  </div>
 
 </div>

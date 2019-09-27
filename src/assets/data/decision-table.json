@@ -1,0 +1,97 @@
+[
+  {
+    "comment": "Decision row 1 comment",
+
+    "inputs": [
+      {
+        "name": "MccMnc",
+        "type": "Character",
+        "value": "*"
+      },
+      {
+        "name": "MsgType",
+        "type": "String",
+        "value": "*"
+      },
+      {
+        "name": "AccessType",
+        "type": "String",
+        "value": "LTE"
+      },
+      {
+        "name": "RoamingClass_1stChar",
+        "type": "Character",
+        "value": "I"
+      },
+      {
+        "name": "RequestedQCI",
+        "type": "String",
+        "value": "Interactive_2"
+      },
+      {
+        "name": "pdfQosProfile3G",
+        "type": "Boolean",
+        "value": "*"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "OutputColumn1",
+        "type": "String",
+        "value": "DEF_EPS_QC18_M"
+      },
+      {
+        "name": "OutputColumn2",
+        "type": "String",
+        "value": "DEF_LTE"
+      }
+    ]
+  },
+  {
+    "comment": "Decision row 2 comment",
+    "inputs": [
+      {
+        "name": "MccMnc",
+        "type": "Character",
+        "value": "*"
+      },
+      {
+        "name": "MsgType",
+        "type": "String",
+        "value": "*"
+      },
+      {
+        "name": "AccessType",
+        "type": "String",
+        "value": "EHRPD"
+      },
+      {
+        "name": "RoamingClass_1stChar",
+        "type": "Character",
+        "value": "I"
+      },
+      {
+        "name": "RequestedQCI",
+        "type": "String",
+        "value": "*"
+      },
+      {
+        "name": "pdfQosProfile3G",
+        "type": "Boolean",
+        "value": "*"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "OutputColumn1",
+        "type": "String",
+        "value": "DEF_EPS_E_M"
+      },
+      {
+        "name": "OutputColumn2",
+        "type": "String",
+        "value": "DEF_LTE_E_M"
+      }
+    ]
+  }
+]

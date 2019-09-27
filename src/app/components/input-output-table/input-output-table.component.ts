@@ -1,8 +1,14 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ToolbarService} from '../toolbar/toolbar.service';
-import {PeopleService} from '../../services/people.service';
-import {Person} from '../../models/person';
-import {TableColumn} from '@swimlane/ngx-datatable';
+import {DatatableComponent, TableColumn} from '@swimlane/ngx-datatable';
+import {DecisionService} from '../../services/decision.service';
+import {DecisionRow} from '../../models/decision-row';
+import * as _ from 'lodash';
+
+export interface ExtendedTableColumn extends TableColumn {
+  index?: number;
+  type?: string;
+}
 
 @Component({
   selector: 'app-input-output-table',
@@ -12,51 +18,83 @@ import {TableColumn} from '@swimlane/ngx-datatable';
 })
 export class InputOutputTableComponent implements OnInit {
 
-  inputRows: Array<Person>;
-  inputColumnDefinitions = Array<TableColumn>();
+  rows: Array<DecisionRow>;
+  columnDefinitions = Array<ExtendedTableColumn>();
+
+  @ViewChild(DatatableComponent, {static: true})
+  ngxTable: DatatableComponent;
+
+  // Header Templates
+  @ViewChild('headerTmpl', {static: true}) headerTmpl: TemplateRef<any>;
+
+  // Column cell templates
+  @ViewChild('inputValueTmpl', {static: true}) inputValueTmpl: TemplateRef<any>;
+  @ViewChild('outputValueTmpl', {static: true}) outputValueTmpl: TemplateRef<any>;
+
+  private clickedColumnIndex: number;
 
   constructor(private toolbarService: ToolbarService,
-              private peopleService: PeopleService) {
+              private decisionService: DecisionService) {
   }
 
   ngOnInit() {
     this.toolbarService.$title.next('Input/Output Table');
 
-    this.peopleService.get().subscribe(res => {
-      this.inputRows = res;
-    });
+    this.decisionService.get().subscribe(res => {
+      this.rows = res;
 
-    this.inputColumnDefinitions = [
-      {
-        name: 'Id',
-        flexGrow: 1,
-        resizeable: false
-      },
-      {
-        name: 'Name',
-        flexGrow: 1,
-        resizeable: false
-      },
-      {
-        name: 'Gender',
-        flexGrow: 1,
-        resizeable: false
-      },
-      {
-        name: 'City',
-        flexGrow: 1,
-        resizeable: false,
-        prop: 'address.city'
-      },
-      {
-        name: 'Age',
-        flexGrow: 1,
-        resizeable: false,
-        prop: 'age'
-      }];
+      this.columnDefinitions = [
+        {
+          name: 'Comment',
+          flexGrow: 1.5,
+          resizeable: false,
+          frozenLeft: false,
+          cellClass: 'comment-cell'
+        }];
+
+      this.rows[0].inputs.forEach((input, index) => {
+        this.columnDefinitions.push(
+          {
+            name: input.name,
+            type: input.type,
+            flexGrow: 1,
+            resizeable: true,
+            cellTemplate: this.inputValueTmpl,
+            headerTemplate: this.headerTmpl,
+            comparator: this.comparator.bind(this),
+            index
+          }
+        );
+      });
+      this.rows[0].outputs.forEach((output, index) => {
+        this.columnDefinitions.push(
+          {
+            name: output.name,
+            type: output.type,
+            flexGrow: 1,
+            resizeable: true,
+            cellTemplate: this.outputValueTmpl,
+            headerTemplate: this.headerTmpl,
+            comparator: this.comparator.bind(this),
+            index
+          }
+        );
+      });
+    });
   }
 
   getRowHeight() {
-    return 56;
+    return 65;
+  }
+
+  comparator(valueA, valueB, rowA, rowB) {
+    _.delay(() => {
+      console.log(this.clickedColumnIndex);
+      console.log('Sorting Comparator', rowA, rowB);
+    }, 100);
+  }
+
+  setColumnIndex(column: ExtendedTableColumn) {
+    this.clickedColumnIndex = column.index;
   }
 }
