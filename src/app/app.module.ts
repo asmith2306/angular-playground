@@ -21,6 +21,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ToolbarMenuComponent } from './components/toolbar-menu/toolbar-menu.component';
 import { RhsAnchorDirective } from './components/toolbar/rhs-anchor.directive';
 import { InputOutputTableComponent } from './components/input-output-table/input-output-table.component';
+import { PrimeInputOutputTableComponent } from './components/prime-input-output-table/prime-input-output-table.component';
+import {CustomPrimeModule} from './custom-prime.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { InputOutputTableComponent } from './components/input-output-table/input
     ToolbarComponent,
     ToolbarMenuComponent,
     RhsAnchorDirective,
-    InputOutputTableComponent
+    InputOutputTableComponent,
+    PrimeInputOutputTableComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { InputOutputTableComponent } from './components/input-output-table/input
     AppRoutingModule,
     CustomMaterialModule,
     FlexLayoutModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    CustomPrimeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -6,6 +6,7 @@ import {RxjsTesterComponent} from './components/rxjs-tester/rxjs-tester.componen
 import {PostCatalogComponent} from './components/post-catalog/post-catalog.component';
 import {PeopleCatalogComponent} from './components/people-catalog/people-catalog.component';
 import {InputOutputTableComponent} from './components/input-output-table/input-output-table.component';
+import {PrimeInputOutputTableComponent} from './components/prime-input-output-table/prime-input-output-table.component';
 
 const routes: Routes = [
   {path: 'link-one', component: LinkOneComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'post-catalog', component: PostCatalogComponent},
   {path: 'people-catalog', component: PeopleCatalogComponent},
   {path: 'input-output-table', component: InputOutputTableComponent},
+  {path: 'prime-input-output-table', component: PrimeInputOutputTableComponent},
   {path: 'rxjs-tester', component: RxjsTesterComponent},
   {path: '**', component: PostCatalogComponent}
 ];

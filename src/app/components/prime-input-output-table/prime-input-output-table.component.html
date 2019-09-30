@@ -1,0 +1,65 @@
+<div class="screen-content" style="padding-top: 24px">
+
+  <div class="prime-input-output-container">
+
+    <div fxLayout fxLayoutAlign="space-between" class="prime-table-header">
+      <div fxFlex style="padding-top: 10px">Logic</div>
+      <div fxFlex style="direction: rtl;">
+        <button mat-icon-button (click)="reset()">
+          <mat-icon>360</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="prime-table-container">
+      <p-table #decisionTable [value]="rows" [columns]="scrollableCols" [scrollable]="true" frozenWidth="200px"
+               [resizableColumns]="true" [columnResizeMode]="'expand'" [loading]="isLoading" *ngIf="!isLoading">
+
+        <ng-template pTemplate="colgroup" let-columns>
+          <colgroup>
+            <col *ngFor="let col of columns">
+          </colgroup>
+        </ng-template>
+
+        <ng-template pTemplate="frozenheader">
+          <tr class="right-bordered">
+            <th style="height: 104px">Comment</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="frozenbody" let-row>
+          <tr class="right-bordered">
+            <td>{{row.comment}}</td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+
+          <tr>
+            <th [attr.colspan]="getInputHeaderLength()" height="52">Inputs</th>
+            <th [attr.colspan]="getOutputHeaderLength()" height="52" class="left-bordered">Outputs
+            </th>
+          </tr>
+          <tr>
+            <th *ngFor="let inputHeader of rows[0].inputs" pResizableColumn height="52">
+              <div>{{inputHeader.name}}</div>
+              <div style="font-size: 12px; font-weight: 300;">{{inputHeader.type}}</div>
+            </th>
+            <th *ngFor="let outputHeader of rows[0].outputs; let idx=index" height="52"
+                [ngClass]="{'left-bordered':idx < 1}">
+              <div>{{outputHeader.name}}</div>
+              <div style="font-size: 12px; font-weight: 300;">{{outputHeader.type}}</div>
+            </th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-row>
+          <tr>
+            <td *ngFor="let input of row.inputs">{{input.value}}</td>
+            <td *ngFor="let output of row.outputs; let idx=index"
+                [ngClass]="{'left-bordered':idx < 1}">{{output.value}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
