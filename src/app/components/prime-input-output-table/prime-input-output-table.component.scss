@@ -4,7 +4,7 @@
   0 3px 14px 2px rgba(0, 0, 0, 0.12);
   border-radius: 8px;
   overflow-x: hidden;
-  height: 85vh;
+  max-height: 85vh;
 
   .prime-table-header {
     padding: 16px;
@@ -47,6 +47,10 @@
 
       .right-bordered {
         border-right: 4px solid lightgray;
+      }
+
+      .bottom-bordered {
+        border-bottom: 4px solid lightgray;
       }
     }
   }

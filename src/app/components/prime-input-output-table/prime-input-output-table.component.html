@@ -22,7 +22,7 @@
         </ng-template>
 
         <ng-template pTemplate="frozenheader">
-          <tr class="right-bordered">
+          <tr class="right-bordered bottom-bordered">
             <th style="height: 104px">Comment</th>
           </tr>
         </ng-template>
@@ -39,7 +39,7 @@
             <th [attr.colspan]="getOutputHeaderLength()" height="52" class="left-bordered">Outputs
             </th>
           </tr>
-          <tr>
+          <tr class="bottom-bordered">
             <th *ngFor="let inputHeader of rows[0].inputs" pResizableColumn height="52">
               <div>{{inputHeader.name}}</div>
               <div style="font-size: 12px; font-weight: 300;">{{inputHeader.type}}</div>
